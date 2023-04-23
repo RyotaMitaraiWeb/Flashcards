@@ -16,7 +16,7 @@ describe('IsGuestGuard', () => {
     expect(result).toBe(true);
   });
 
-  it('Returns an object to redirect to login if the user\'s id is different from 0', () => {
+  it('Returns an object to redirect to login if the user\'s id is 0', () => {
     const store = useUserStore();
     store.restartUser();
 
