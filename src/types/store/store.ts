@@ -24,3 +24,15 @@ export interface IUserState {
 export interface ILoadingState {
   status: boolean;
 }
+
+/**
+ * ```typescript
+ * interface IMobileMenu {
+    open: boolean;
+}
+ * ```
+ * Holds information about whether the mobile menu is open or not.
+ */
+ export interface IMobileMenuState {
+  open: boolean;
+ }
