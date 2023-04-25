@@ -33,6 +33,9 @@ export interface ILoadingState {
  * ```
  * Holds information about whether the mobile menu is open or not.
  */
- export interface IMobileMenuState {
+export interface IMobileMenuState {
   open: boolean;
- }
+}
+
+export type palette = 'deepPurple' | 'indigo' | 'blue' | 'green' | 'blueGrey' | 'red' | 'pink';
+export type theme = 'light' | 'dark';
