@@ -1,71 +1,42 @@
-# client
+# Flashcards
+A rewrite of my Flashcards application in Vue (TypeScript)
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
+## How to run
+```bash
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
+## How to run tests
+```bash
 npm run test:unit
-```
-
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
-
-```sh
-# Install browsers for the first run
-npx playwright install
-
-# When testing on CI, must build the project first
-npm run build
-
-# Runs the end-to-end tests
 npm run test:e2e
-# Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
-# Runs the tests of a specific file
-npm run test:e2e -- tests/example.spec.ts
-# Runs the tests in debug mode
-npm run test:e2e -- --debug
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+Unit tests are run with Vitest and E2E tests are run with Playwright.
 
-```sh
-npm run lint
+## Required environment variables
+Create an ``.env`` file in the root of the project and populate it with the following variables:
+
+```bash
+VITE_API_URL="your_api_url"
 ```
+
+## Structure
+* ``components`` - holds all components in the project, each in its own subfolder. Documentation with more detailed information is provided for each component in its respective subfolder.
+* ``constants`` - holds objects with various constant values. The current ones consist of:
+* * ``allowedPreferences`` - valid themes and palette colors.
+* * ``api`` - the various API endpoints to which you can send requests. Each endpoint property is preppended by the ``VITE_API_URL`` environment variable automatically, so you do not have to provide it with each request yourself.
+* * ``colors`` - the hex values of each valid palette color from ``allowedPreferences``.
+* * ``httpstatus`` - an enum that provides verbose formatting of all HTTP status codes that appear at least once within the application.
+* ``guards`` - contains route guards to prevent unauthorized access to desired pages. Check the subfolder for more information on each guard.
+* ``router`` - holds all files related to Vue Router.
+* ``stores`` - holds all Pinia states. Check the subfolder for more information on each state and when to use them
+* ``types`` - holds all types, split into subfolders matching the modules where they are used (e.g. all interfaces related to Pinia states are stored in the subfolder ``store``)
+* ``util`` - holds various utility/helper functions that make certain tasks easier. Check each function's subfolder for more detailed documentation on their usage and functionality.
+* ``views`` - holds all ``vue`` files that will be provided to the Vue router for rendering. ``vue`` files are split in subfolders based on the paths where they will be rendered (index pages like ``/`` are placed in subfolder ``index``), which is where you can find more-detailed documentation about the pages.
+
+**Note:** this project uses SCSS as a CSS pre-processor.
+
+## License
+MIT
