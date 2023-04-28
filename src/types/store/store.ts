@@ -27,13 +27,13 @@ export interface ILoadingState {
 
 /**
  * ```typescript
- * interface IMobileMenu {
+ * interface IMenuState {
     open: boolean;
 }
  * ```
- * Holds information about whether the mobile menu is open or not.
+ * Holds information about whether the navigation menu is open or not.
  */
-export interface IMobileMenuState {
+export interface IMenuState {
   open: boolean;
 }
 

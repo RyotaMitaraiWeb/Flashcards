@@ -1,7 +1,7 @@
 import { setActivePinia, createPinia } from 'pinia'
 import { beforeEach, describe, expect, it } from 'vitest';
-import { useMobileMenuStore } from './mobile-menu';
-import type { IMobileMenuState } from '../../types/store/store';
+import { useMenuStore } from './mobile-menu';
+import type { IMenuState } from '../../types/store/store';
 
 describe('userStore', () => {
   beforeEach(() => {
@@ -9,34 +9,34 @@ describe('userStore', () => {
   });
 
   it('Initializes state successfully', () => {
-    const store = useMobileMenuStore();
+    const store = useMenuStore();
 
-    const menu: IMobileMenuState = store.menu;
+    const menu: IMenuState = store.menu;
 
-    expect(menu).toEqual<IMobileMenuState>({
+    expect(menu).toEqual<IMenuState>({
       open: false,
     });
   });
 
   it('open works', () => {
-    const store = useMobileMenuStore();
+    const store = useMenuStore();
     store.open();
 
-    const menu: IMobileMenuState = store.menu;
+    const menu: IMenuState = store.menu;
 
-    expect(menu).toEqual<IMobileMenuState>({
+    expect(menu).toEqual<IMenuState>({
       open: true,
     });
   });
 
   it('close works', () => {
-    const store = useMobileMenuStore();
+    const store = useMenuStore();
     store.open();
     store.close();
     
-    const menu: IMobileMenuState = store.menu;
+    const menu: IMenuState = store.menu;
 
-    expect(menu).toEqual<IMobileMenuState>({
+    expect(menu).toEqual<IMenuState>({
       open: false,
     });
   });

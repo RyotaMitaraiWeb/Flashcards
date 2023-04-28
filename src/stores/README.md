@@ -20,7 +20,7 @@ interface ILoadingState {
 This state contains information about whether something is loading at the moment and you want encourage the user to wait. The ``request`` function automatically sets ``status`` to ``true`` this while waiting for the request to resolve (and reverts it back to ``false`` after resolving it). This state can be used to display a loading icon or a different element that indicates that something is loading and the user should wait.
 
 ```typescript
-interface IMobileMenu {
+interface IMenuState {
  open: boolean;
 }
 ```
