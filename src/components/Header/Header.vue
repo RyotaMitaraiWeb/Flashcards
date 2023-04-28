@@ -1,0 +1,24 @@
+<script setup lang="ts">
+import HeaderActions from './HeaderActions/HeaderActions.vue';
+import { useUserStore } from '../../stores/user/user';
+import Menu from './Menu/Menu.vue';
+import NavigationButton from './NavigationButton/NavigationButton.vue';
+
+const userStore = useUserStore();
+const user = userStore.user;
+const { id, username } = user;
+</script>
+
+<template>
+  <Menu></Menu>
+  <v-app-bar color="primary" prominent id="header">
+    <template v-slot:prepend>
+      <NavigationButton></NavigationButton>
+    </template>
+    <v-app-bar-title>
+      <template v-if="id === 0">Welcome!</template>
+      <template v-else>Welcome, {{ username }}!</template>
+    </v-app-bar-title>
+    <HeaderActions></HeaderActions>
+  </v-app-bar>
+</template>

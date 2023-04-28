@@ -15,6 +15,8 @@ npm run test:e2e
 
 Unit tests are run with Vitest and E2E tests are run with Playwright.
 
+Some components rely on Vuetify components that can only be rendered in ``v-layout`` and similar tags. When unit testing those, most components in this project provide a ``[Component]TestWrapper.test.vue`` file. Import this one and render it instead of the normal component.
+
 ## Required environment variables
 Create an ``.env`` file in the root of the project and populate it with the following variables:
 
@@ -24,6 +26,7 @@ VITE_API_URL="your_api_url"
 
 ## Structure
 * ``components`` - holds all components in the project, each in its own subfolder. Documentation with more detailed information is provided for each component in its respective subfolder.
+* * **Note:** in some cases, you may see files with a name pattern like ``ComponentTestWrapper.vue.test``. Those are meant to be rendered **only** in testing environments and should not be used in production environments. The reason for those's existence is so that the component that has to be tested can be injected easily into a ``v-layout`` component (or another Vuetify component) instead of having to configure this in the tests themselves.
 * ``constants`` - holds objects with various constant values. The current ones consist of:
 * * ``allowedPreferences`` - valid themes and palette colors.
 * * ``api`` - the various API endpoints to which you can send requests. Each endpoint property is preppended by the ``VITE_API_URL`` environment variable automatically, so you do not have to provide it with each request yourself.

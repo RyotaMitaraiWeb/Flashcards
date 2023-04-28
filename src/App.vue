@@ -1,19 +1,17 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterView } from 'vue-router';
+import { useTheme } from 'vuetify/lib/framework.mjs';
+import Header from './components/Header/Header.vue';
+const themeProvider = useTheme();
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-  <h1>Hi</h1>
-  <RouterView />
+  <v-theme-provider with-background>
+    <v-layout id="layout">
+      <main :class="`${themeProvider.global.name.value} ${themeProvider.themes.value.light.colors.primary}`">
+        <Header></Header>
+        <RouterView />
+      </main>
+    </v-layout>
+  </v-theme-provider>
 </template>
-
-<style scoped lang="scss">
-</style>
