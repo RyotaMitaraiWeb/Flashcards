@@ -22,3 +22,11 @@ const { id, username } = user;
     <HeaderActions></HeaderActions>
   </v-app-bar>
 </template>
+
+<style lang="scss" scoped>
+#header {
+  position: relative !important; // initial fixed position is set via style property
+  height: 64px;
+  overflow: scroll;
+}
+</style>
