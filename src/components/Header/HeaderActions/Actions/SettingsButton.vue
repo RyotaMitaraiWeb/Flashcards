@@ -1,5 +1,11 @@
+<script setup lang="ts">
+import { useDisplay } from 'vuetify/lib/framework.mjs';
+
+const { smAndUp } = useDisplay();
+</script>
+
 <template>
-  <RouterLink to="/account/settings">
+  <RouterLink to="/account/settings" v-if="smAndUp">
     <v-btn icon="mdi-cog" color="white" tag="span" variant="plain" class="gear">
     </v-btn>
     <v-tooltip text="Settings" activator="parent" location="bottom right"></v-tooltip>

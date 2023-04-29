@@ -51,4 +51,30 @@ describe('SettingsButton', () => {
     const tooltip = await element.findByText('Settings');
     expect(tooltip).not.toBeNull();
   });
+
+  it('Does not render when the screen is smaller than Vuetify\'s sm breakpoint', () => {
+    const smallVuetify = createVuetify({
+      components,
+      directives,
+      display: {
+        mobileBreakpoint: 'sm',
+        thresholds: {
+          xs: 0,
+          sm: 1500,
+          md: 1501,
+          lg: 1502,
+          xl: 1503,
+        },
+      }
+    }); 
+
+    const { container } = render(SettingsButton, {
+      global: {
+        plugins: [smallVuetify, router],
+      }
+    });
+
+    const element = container.querySelector('.gear');
+    expect(element).toBeNull();
+  });
 });

@@ -22,4 +22,4 @@ Renders a ``<v-btn>`` wrapped in a ``<RouterLink>`` that leads to the page provi
 <SettingsButton></SettingsButton>
 ```
 
-Renders a ``<v-btn>`` wrapped in a ``<RouterLink>`` that leads to the ``/account/settings`` page. The ``<v-btn>`` is rendered as a ``<span>`. The button consists of a gear icon and a tooltip that activates upon hover.
+Renders a ``<v-btn>`` wrapped in a ``<RouterLink>`` that leads to the ``/account/settings`` page. The ``<v-btn>`` is rendered as a ``<span>``. The button consists of a gear icon and a tooltip that activates upon hover. The button is not rendered if it's below Vuetify's ``sm`` breakpoint (600px).
