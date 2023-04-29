@@ -27,6 +27,6 @@ const { id, username } = user;
 #header {
   position: relative !important; // initial fixed position is set via style property
   height: 64px;
-  overflow: scroll;
+  overflow: auto;
 }
 </style>
