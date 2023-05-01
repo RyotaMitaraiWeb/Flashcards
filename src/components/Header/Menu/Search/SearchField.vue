@@ -8,7 +8,7 @@ function search(event: Event) {
 
 <template>
   <form @submit="search" id="search">
-    <v-text-field id="search" variant="outlined" label="Search decks by title" counter
+    <v-text-field variant="outlined" label="Search decks by title" counter
       hint="The search is case insensitive" persistent-hint clearable prepend-inner-icon="mdi-magnify">
     </v-text-field>
   </form>
