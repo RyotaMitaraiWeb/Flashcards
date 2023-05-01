@@ -8,7 +8,7 @@ async function request<T>(method: method, url: string, body?: any): Promise<IRes
 This is the base function upon which all other request functions are built. The function takes care of the following tasks:
 
 * attaches all necessary headers to the request as follows:
-* * ``Authorization`` is set to ``Bearer [jwt]``, where ``[jwt]`` is the value of ``accessToken`` in ``localStorage`` (or an empty string if ``token`` does not exist).
+* * ``Authorization`` is set to ``Bearer [jwt]``, where ``[jwt]`` is the value of ``accessToken`` in ``localStorage`` (or an empty string if ``accessToken`` does not exist).
 * * ``'Access-Control-Allow-Origin'`` is set to ``*``
 * * if ``body`` is different from ``undefined`` or ``null``, ``Content-Type`` is set to ``application/json``, otherwise, it is not attached at all.
 * Stringifies ``body`` in a JSON string if it is not ``undefined`` or ``null``.

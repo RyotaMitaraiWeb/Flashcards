@@ -11,6 +11,7 @@ npm run dev
 ```bash
 npm run test:unit
 npm run test:e2e
+npm run test:e2e:debug # disables headless mode, useful for close inspection of specific tests
 ```
 
 Unit tests are run with Vitest and E2E tests are run with Playwright.
@@ -22,6 +23,7 @@ Create an ``.env`` file in the root of the project and populate it with the foll
 
 ```bash
 VITE_API_URL="your_api_url"
+VITE_API_SNACKBAR_TIMEOUT="10000" # Time until a snackbar disappears, expressed in milliseconds
 ```
 
 ## Structure
@@ -32,6 +34,10 @@ VITE_API_URL="your_api_url"
 * * ``api`` - the various API endpoints to which you can send requests. Each endpoint property is preppended by the ``VITE_API_URL`` environment variable automatically, so you do not have to provide it with each request yourself.
 * * ``colors`` - the hex values of each valid palette color from ``allowedPreferences``.
 * * ``httpstatus`` - an enum that provides verbose formatting of all HTTP status codes that appear at least once within the application.
+* * ``invalidActionsMessages`` - provides messages for invalid actions like failed login, unauthorized entry, and etc., those are typically displayed with a snackbar.
+* * ``succesActionsMessages`` - provides messages for successful actions (like a successful login), those are typically displayed with a snackbar
+* * ``validationErrorMessages`` - messages related to failed validations (e.g. message for when the username is too short).
+* * ``validationRules`` - values for validation, e.g. the minimum length of a username, the minimum amount of flashcards in a deck, and so on.
 * ``guards`` - contains route guards to prevent unauthorized access to desired pages. Check the subfolder for more information on each guard.
 * ``router`` - holds all files related to Vue Router.
 * ``stores`` - holds all Pinia states. Check the subfolder for more information on each state and when to use them
