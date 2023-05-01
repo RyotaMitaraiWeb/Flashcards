@@ -1,15 +1,16 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia';
 import { useUserStore } from '../../../stores/user/user';
 import LinkButton from './Actions/LinkButton.vue';
 import SettingsButton from './Actions/SettingsButton.vue';
 
 const userStore = useUserStore();
-const user = userStore.user;
-const id = user.id;
+const { user } = storeToRefs(userStore);
+
 </script>
 
 <template>
-  <template v-if="id === 0">
+  <template v-if="user.id === 0">
     <LinkButton to="/login" icon="mdi-login-variant">Login</LinkButton>
     <LinkButton to="/register" icon="mdi-form-select">Register</LinkButton>
   </template>

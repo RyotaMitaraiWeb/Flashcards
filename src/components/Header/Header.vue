@@ -3,10 +3,10 @@ import HeaderActions from './HeaderActions/HeaderActions.vue';
 import { useUserStore } from '../../stores/user/user';
 import Menu from './Menu/Menu.vue';
 import NavigationButton from './NavigationButton/NavigationButton.vue';
+import { storeToRefs } from 'pinia';
 
 const userStore = useUserStore();
-const user = userStore.user;
-const { id, username } = user;
+const { user } = storeToRefs(userStore);
 </script>
 
 <template>
@@ -16,8 +16,8 @@ const { id, username } = user;
       <NavigationButton></NavigationButton>
     </template>
     <v-app-bar-title>
-      <template v-if="id === 0">Welcome!</template>
-      <template v-else>Welcome, {{ username }}!</template>
+      <template v-if="user.id === 0">Welcome!</template>
+      <template v-else>Welcome, {{ user.username }}!</template>
     </v-app-bar-title>
     <HeaderActions></HeaderActions>
   </v-app-bar>
