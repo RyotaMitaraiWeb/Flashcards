@@ -10,7 +10,8 @@ export const api = Object.freeze({
       register: `${accounts}/register`,
       login: `${accounts}/login`,
       logout: `${accounts}/logout`,
-      session: `${accounts}/session`
+      session: `${accounts}/session`,
+      usernameExists: (username: string) => `${accounts}/username/${username}`,
     },
     decks: {
       root: `${decks}`,
