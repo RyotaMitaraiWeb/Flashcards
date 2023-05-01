@@ -39,3 +39,21 @@ export interface IMenuState {
 
 export type palette = 'deepPurple' | 'indigo' | 'blue' | 'green' | 'blueGrey' | 'red' | 'pink';
 export type theme = 'light' | 'dark';
+
+/**
+ * ```typescript
+ * interface ISnackbarState {
+    open: boolean;
+    status: snackbarStatus;
+    text: string | string[];
+}
+ * ```
+ * Holds information about whether the snackbar is open and how to display it.
+ */
+export interface ISnackbarState {
+  open: boolean;
+  status: snackbarStatus;
+  text: string | string[];
+}
+
+export type snackbarStatus = 'primary' | 'success' | 'info' | 'error' | 'warning';
