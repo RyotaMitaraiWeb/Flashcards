@@ -14,7 +14,7 @@ import type { IRequest, IResponse, method } from '../../types/util/request';
  */
 async function request<T>(method: method, url: string, body?: any): Promise<IResponse<T>> {
   const headers: HeadersInit = {
-    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+    'Authorization': `Bearer ${localStorage.getItem('accessToken') || ''}`,
     'Access-Control-Allow-Origin': '*',
   };
 
