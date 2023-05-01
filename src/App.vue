@@ -2,6 +2,8 @@
 import { RouterView } from 'vue-router';
 import { useTheme } from 'vuetify/lib/framework.mjs';
 import Header from './components/Header/Header.vue';
+import Snackbar from './components/Snackbar/Snackbar.vue';
+
 const themeProvider = useTheme();
 </script>
 
@@ -13,6 +15,7 @@ const themeProvider = useTheme();
         <RouterView />
       </main>
     </v-layout>
+    <Snackbar></Snackbar>
   </v-theme-provider>
 </template>
 
