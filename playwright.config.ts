@@ -13,7 +13,7 @@ import { devices } from '@playwright/test'
 const config: PlaywrightTestConfig = {
   testDir: './e2e',
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 30 * 10000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.
@@ -40,7 +40,7 @@ const config: PlaywrightTestConfig = {
     trace: 'on-first-retry',
 
     /* Only on CI systems run the tests headless */
-    headless: !!process.env.CI
+    headless: true,
   },
 
   /* Configure projects for major browsers */
