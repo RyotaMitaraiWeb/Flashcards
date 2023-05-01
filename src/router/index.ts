@@ -4,7 +4,8 @@ import HomeVue from '../views/Home.vue';
 import AboutVue from '../views/About.vue';
 import { IsGuestGuard } from '../guards/isGuest/isGuest';
 import RegisterVue from '../views/Register.vue';
-
+import LogoutVue from '../views/Logout.vue';
+import { IsLoggedInGuard } from '../guards/isLoggedIn/isLoggedIn';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -21,12 +22,20 @@ const router = createRouter({
     {
       path: '/login',
       component: LoginVue,
-      beforeEnter: [IsGuestGuard]
+      beforeEnter: [IsGuestGuard],
+      name: 'login',
     },
     {
       path: '/register',
       component: RegisterVue,
       beforeEnter: [IsGuestGuard],
+      name: 'register',
+    },
+    {
+      path: '/logout',
+      component: LogoutVue,
+      beforeEnter: [IsLoggedInGuard],
+      name: 'logout',
     }
   ],
 });

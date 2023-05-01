@@ -23,3 +23,8 @@ This page is used by users to log into their accounts. This is done by providing
 If the credentials are valid, a new session will be created for the user and they will be redirected to the home page.
 
 The page cannot be accessed by people that currently have a valid session
+
+# Logout
+This page is a renderless component. Upon load, the JWT in localStorage's ``accessToken`` will be deleted (and become unusable), the user's state will be restarted and the user will be redirected back to the home page.
+
+The page cannot be accessed by guests.
