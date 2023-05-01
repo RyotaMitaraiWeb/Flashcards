@@ -1,3 +1,5 @@
+import { invalidActionsMessages } from '../../constants/invalidActionsMessages';
+import { useSnackbarStore } from '../../stores/snackbar/snackbar';
 import { useUserStore } from '../../stores/user/user';
 
 /**
@@ -8,10 +10,12 @@ import { useUserStore } from '../../stores/user/user';
 export function IsGuestGuard() {
   const store = useUserStore();
   const user = store.user;
-  
+  const snackbar = useSnackbarStore();
+
   if (user.id === 0) {
     return true;
   }
 
+  snackbar.open(invalidActionsMessages.isNotLoggedOut, 'error');
   return { name: 'home' };
 }

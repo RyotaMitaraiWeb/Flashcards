@@ -1,7 +1,8 @@
 import { createPinia, setActivePinia } from 'pinia';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { useUserStore } from '../../stores/user/user';
 import { IsGuestGuard } from './isGuest';
+import { useSnackbarStore } from '../../stores/snackbar/snackbar';
 
 describe('IsGuestGuard', () => {
   beforeEach(() => {
@@ -20,7 +21,11 @@ describe('IsGuestGuard', () => {
     const store = useUserStore();
     store.setUser({ id: 1, username: 'a' });
 
+    const snackbar = useSnackbarStore();
+    const spy = vi.spyOn(snackbar, 'open').mockImplementation(() => {});
+
     const result = IsGuestGuard();
     expect(result).toEqual({ name: 'home' });
+    expect(spy).toHaveBeenCalled();
   });
 });
