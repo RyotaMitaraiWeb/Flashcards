@@ -1,11 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import LoginVue from '../views/Login.vue';
 import HomeVue from '../views/Home.vue';
-import AboutVue from '../views/About.vue';
 import { IsGuestGuard } from '../guards/isGuest/isGuest';
 import RegisterVue from '../views/Register.vue';
 import LogoutVue from '../views/Logout.vue';
+import PageNotFoundVue from '../views/PageNotFound.vue';
 import { IsLoggedInGuard } from '../guards/isLoggedIn/isLoggedIn';
+import { deckRoutes } from './decks';
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -13,11 +15,6 @@ const router = createRouter({
       path: '/',
       component: HomeVue,
       name: 'home'
-    },
-    {
-      path: '/about',
-      component: AboutVue,
-      name: 'about'
     },
     {
       path: '/login',
@@ -36,7 +33,19 @@ const router = createRouter({
       component: LogoutVue,
       beforeEnter: [IsLoggedInGuard],
       name: 'logout',
-    }
+    },
+    
+    ...deckRoutes,
+
+    {
+      path: '/page-not-found',
+      component: PageNotFoundVue,
+      name: '404',
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/page-not-found',
+    },
   ],
 });
 
