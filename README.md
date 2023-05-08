@@ -43,9 +43,12 @@ VITE_API_SNACKBAR_TIMEOUT="10000" # Time until a snackbar disappears, expressed 
 * ``stores`` - holds all Pinia states. Check the subfolder for more information on each state and when to use them
 * ``types`` - holds all types, split into subfolders matching the modules where they are used (e.g. all interfaces related to Pinia states are stored in the subfolder ``store``)
 * ``util`` - holds various utility/helper functions that make certain tasks easier. Check each function's subfolder for more detailed documentation on their usage and functionality.
-* ``views`` - holds all ``vue`` files that will be provided to the Vue router for rendering. ``vue`` files are split in subfolders based on the paths where they will be rendered (index pages like ``/`` are placed in subfolder ``index``), which is where you can find more-detailed documentation about the pages.
+* ``views`` - holds all ``vue`` files that will be provided to the Vue router for rendering. ``vue`` files are split in subfolders based on the paths where they will be rendered (index pages like ``/`` are placed in subfolder ``index``), which is where you can find more-detailed documentation about the pages. The only exception to this rule is the ``Partials`` folder, which hosts "tab" views (e.g. details about a deck and then a study session).
 
 **Note:** this project uses SCSS as a CSS pre-processor.
+
+## Known bugs
+* On Webkit browsers, flipping a card shows a flipped variant of the current side for a very short time before displaying the correct side.
 
 ## License
 MIT

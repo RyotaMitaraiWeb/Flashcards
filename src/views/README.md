@@ -28,3 +28,6 @@ The page cannot be accessed by people that currently have a valid session
 This page is a renderless component. Upon load, the JWT in localStorage's ``accessToken`` will be deleted (and become unusable), the user's state will be restarted and the user will be redirected back to the home page.
 
 The page cannot be accessed by guests.
+
+# PageNotFound
+This page is rendered if the user accesses a non-existant route or if the resource they are requesting (e.g. a deck) does not exist.
