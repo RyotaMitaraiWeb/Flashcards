@@ -1,20 +1,13 @@
 <script lang="ts" setup>
 import type { IDeck } from '../../../../types/components/decks';
-import { toShortDate } from '../../../../util/toShortDate/toShortDate';
+import { dateFormatter } from '../../../../util/dateFormatter/dateFormatter';
 
 export interface DeckDetails {
   deck: IDeck,
 };
 
 const props = defineProps<DeckDetails>();
-const createdAt = toShortDate(props.deck.createdAt);
-const updatedAt = toShortDate(props.deck.updatedAt);
-
-const hasBeenUpdated = props.deck.createdAt !== props.deck.updatedAt;
-
-const subtitle = hasBeenUpdated
-  ? `Created on: ${createdAt}. Last updated on: ${updatedAt}`
-  : `Created on: ${createdAt}`;
+const subtitle = dateFormatter(props.deck.createdAt, props.deck.updatedAt);
 </script>
 
 <template>
