@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import Field from '../components/Field/Field.vue';
 import { post } from '../util/request/request';
@@ -65,14 +66,6 @@ async function register(event: Event) {
     loadingStore.stopLoading();
   }
 }
-
-function validateUsername(valid: boolean) {
-  usernameIsValid.value = valid;
-}
-
-function validatePassword(valid: boolean) {
-  passwordIsValid.value = valid;
-}
 </script>
 
 <template>
@@ -83,12 +76,12 @@ function validatePassword(valid: boolean) {
         <Field label="Username" name="username"
           hint="Username must be between 5 and 15 characters long, unique, and alphanumeric" type="text"
           :counter="maxUsernameLengthRule" :rules="[minUsernameLength, maxUsernameLength, alphanumericUsername, uniqueUsername]"
-          display-max-counter @change-valid-status="validateUsername">
+          display-max-counter v-model="usernameIsValid">
         </Field>
       </div>
       <div class="field-section">
         <Field label="Password" name="password" hint="Password must be at least 6 characters long" type="password"
-          :counter="6" :rules="[minPasswordLength]" @change-valid-status="validatePassword">
+          :counter="6" :rules="[minPasswordLength]" v-model="passwordIsValid">
         </Field>
       </div>
       <div class="field-section">

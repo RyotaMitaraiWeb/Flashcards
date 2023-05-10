@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { ValidatorFunction } from '../../types/util/validators';
@@ -11,9 +12,10 @@ export interface IField {
   type: 'text' | 'password';
   counter?: number;
   displayMaxCounter?: boolean;
+  modelValue?: boolean;
 }
 
-const emit = defineEmits(['changeValidStatus'])
+const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps<IField>();
 let errorMessages = ref([] as string[]);
@@ -31,7 +33,7 @@ watch(input, async () => {
     }
 
     errorMessages.value = errors;
-    emit('changeValidStatus', errorMessages.value.length === 0);
+    emit('update:modelValue', errorMessages.value.length === 0);
   }
 
 });

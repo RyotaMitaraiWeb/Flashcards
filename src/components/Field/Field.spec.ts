@@ -75,7 +75,8 @@ describe('Field component', () => {
         type: 'text',
         counter: 15,
         displayMaxCounter: true,
-        rules: [invalid, invalidAsync]
+        rules: [invalid, invalidAsync],
+        modelValue: false,
       }
     });
 
