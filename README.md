@@ -7,6 +7,8 @@ npm install
 npm run dev
 ```
 
+To run the server associated with this project, check [this repository](https://github.com/RyotaMitaraiWeb/Flashcards-Service)
+
 ## How to run tests
 ```bash
 npm run test:unit
@@ -40,6 +42,7 @@ VITE_API_SNACKBAR_TIMEOUT="10000" # Time until a snackbar disappears, expressed 
 * * ``validationRules`` - values for validation, e.g. the minimum length of a username, the minimum amount of flashcards in a deck, and so on.
 * ``guards`` - contains route guards to prevent unauthorized access to desired pages. Check the subfolder for more information on each guard.
 * ``router`` - holds all files related to Vue Router.
+* * ``resolvers`` - resolvers are functions that fetch data before navigating to a given route. All resolvers are documented within the folder's README.
 * ``stores`` - holds all Pinia states. Check the subfolder for more information on each state and when to use them
 * ``types`` - holds all types, split into subfolders matching the modules where they are used (e.g. all interfaces related to Pinia states are stored in the subfolder ``store``)
 * ``util`` - holds various utility/helper functions that make certain tasks easier. Check each function's subfolder for more detailed documentation on their usage and functionality.
