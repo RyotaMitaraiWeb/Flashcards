@@ -1,5 +1,5 @@
 import { HttpStatus } from '../../src/constants/httpstatus';
-import type { IDeck } from '../../src/types/components/decks';
+import type { ICatalogueDeck, IDeck } from '../../src/types/components/decks';
 
 export function deckSeed(authorId = 1, bookmarked = false) {
   return {
@@ -28,5 +28,31 @@ export function deckSeed(authorId = 1, bookmarked = false) {
         },
       ]
     } as IDeck),
+  };
+}
+
+export function deckCatalogueSeed(total: number, number = 1) {
+  const decks: ICatalogueDeck[] = [];
+
+  for (let i = 0; i < number; i++) {
+    const deck: ICatalogueDeck = {
+      id: i + 1,
+      title: 'Deck #' + (i + 1),
+      description: 'Description #' + (i + 1),
+      authorId: 1,
+      createdAt: '2023-04-22T09:00:36.607Z',
+      updatedAt: '2023-04-22T09:00:36.607Z'
+    };
+
+    decks.push(deck);
+  }
+
+  return {
+    status: HttpStatus.OK,
+    contentType: 'application/json',
+    body: JSON.stringify({
+      decks,
+      total, 
+    }),
   };
 }
