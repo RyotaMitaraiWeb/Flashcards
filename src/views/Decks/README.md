@@ -10,6 +10,9 @@ A special message is displayed to the user if there are no decks to be shown wha
 ## Search
 This page can be accessed by pressing "Enter" on the menu's search field (as long as the field is not empty). The search page displays all decks whose titles contain the user's input. The search is case insensitive.
 
+## Own
+This page can be accessed by logged in users. It displays all decks created by the user.
+
 ## Details
 This page displays details about a deck (title, description, creation date, update date if there is such) and allows the user to interact with it in various ways.
 

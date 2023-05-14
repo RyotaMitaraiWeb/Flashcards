@@ -4,6 +4,8 @@ import { getDeck } from './resolvers/getDeck/getDeck';
 import AllVue from '../views/Decks/All.vue';
 import { getCatalogueDecks } from './resolvers/getCatalogueDecks/getCatalogueDecks';
 import SearchVue from '../views/Decks/Search.vue';
+import OwnVue from '../views/Decks/Own.vue';
+import { IsLoggedInGuard } from '../guards/isLoggedIn/isLoggedIn';
 
 export const deckRoutes: RouteRecordRaw[] = [
   {
@@ -17,6 +19,12 @@ export const deckRoutes: RouteRecordRaw[] = [
     component: SearchVue,
     beforeEnter: [getCatalogueDecks],
     name: 'search',
+  },
+  {
+    path: '/decks/own',
+    beforeEnter: [IsLoggedInGuard, getCatalogueDecks],
+    name: 'own',
+    component: OwnVue,
   },
   {
     path: '/decks/:id',
