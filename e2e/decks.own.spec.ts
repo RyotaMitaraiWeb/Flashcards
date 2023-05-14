@@ -46,7 +46,7 @@ test.describe('All decks page', () => {
     expect(count).toBe(6);
   });
 
-  test.only('Redirects the user to the login page if not logged in', async ({ page }) => {
+  test('Redirects the user to the login page if not logged in', async ({ page }) => {
     await page.route(sessionEndpoint, async (route) => {
       await route.fulfill(rejectRequest());
     });
