@@ -1,14 +1,7 @@
 <script setup lang="ts">
 import { useRoute, useRouter } from 'vue-router';
-import { useSnackbarStore } from '../../../../stores/snackbar/snackbar';
 import { ref } from 'vue';
-import { get } from '../../../../util/request/request';
-import type { ICatalogueList } from '../../../../types/components/decks';
-import { api } from '../../../../constants/api';
-import { invalidActionsMessages } from '../../../../constants/invalidActionsMessages';
-import type { IHttpError } from '../../../../types/components/IHttpError';
 import { useLoadingStore } from '../../../../stores/loading/loading';
-import { formatQueriesToString } from '../../../../util/formatQueriesToString/formatQueriesToString';
 
 export interface ICatalogueSorter {
   sortBy?: string;
@@ -17,7 +10,6 @@ export interface ICatalogueSorter {
 }
 
 const props = defineProps<ICatalogueSorter>();
-const emit = defineEmits(['updateSort']);
 
 const sortCategories = [
   {
@@ -61,7 +53,6 @@ const currentSortCategory = ref({
 const route = useRoute();
 const router = useRouter();
 const loadingStore = useLoadingStore();
-const snackbar = useSnackbarStore();
 
 async function sort() {
   // sort property is formatted as {category}-{order}
@@ -75,21 +66,6 @@ async function sort() {
       order,
     },
   });
-
-  const queries = formatQueriesToString(route.query);
-
-  try {
-    const { res, data } = await get<ICatalogueList>(api.root + props.endpoint + queries);
-    if (!res.ok) {
-      const errors = (data as unknown) as IHttpError;
-      snackbar.open(errors.message, 'error');
-    } else {
-      const list = data!;
-      emit('updateSort', list);
-    }
-  } catch {
-    snackbar.open(invalidActionsMessages.requestFailed, 'error');
-  }
 }
 </script>
 
