@@ -15,7 +15,7 @@ const { user } = storeToRefs(userStore);
     <LinkButton to="/register" icon="mdi-form-select">Register</LinkButton>
   </template>
   <template v-else>
-    <LinkButton to="/account/decks" icon="mdi-account">My decks</LinkButton>
+    <LinkButton to="/decks/own" icon="mdi-account">My decks</LinkButton>
     <LinkButton to="/logout" icon="mdi-logout-variant">Logout</LinkButton>
   </template>
 
