@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { fireEvent, render } from '@testing-library/vue';
+import { fireEvent, render, screen } from '@testing-library/vue';
 
 import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
@@ -21,13 +21,13 @@ describe('NavigationButton', () => {
 
     const store = useMenuStore();
 
-    const { container } = render(NavigationButton, {
+    render(NavigationButton, {
       global: {
         plugins: [vuetify, pinia],
       }
     });
 
-    const element = container.querySelector('#menu-btn')!!;
+    const element = await screen.findByLabelText('Open menu');
     await fireEvent.click(element);
 
     expect(store.menu.open).toBe(true);

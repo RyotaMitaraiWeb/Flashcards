@@ -7,6 +7,9 @@ Users can sort the results by the provided options. They can also use the page b
 
 A special message is displayed to the user if there are no decks to be shown whatsoever.
 
+## Search
+This page can be accessed by pressing "Enter" on the menu's search field (as long as the field is not empty). The search page displays all decks whose titles contain the user's input. The search is case insensitive.
+
 ## Details
 This page displays details about a deck (title, description, creation date, update date if there is such) and allows the user to interact with it in various ways.
 
