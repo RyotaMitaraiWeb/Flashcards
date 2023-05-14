@@ -29,11 +29,7 @@ The sorter maintains its own array of "select items", from which it derives each
 
 the ``sortBy`` and ``order`` props instruct the sorter which option to select during the initial load. They default to ``title`` and ``asc``, respectively, if they are not passed. If invalid props are passed, the sorter will select the first option by default.
 
-When the ``v-select`` is updated, the following happens (in that order):
-* the URL's ``sortBy`` and ``order`` queries will be updated with the new values (this also updates the history state, thus this will be counted as a separate navigation).
-* the sorter sends a ``GET`` request to the server on the given ``endpoint``.
-* * If the sorter successfully retrieves a list (aka it gets status code 200), the sorter will emit an ``updateSort`` event, passing the list as an argument.
-* * Otherwise, a snackbar will be displayed with the appropriate error.
+When the ``v-select`` is updated, the URL's ``sortBy`` and ``order`` queries will be updated with the new values (this also updates the history state, thus this will be counted as a separate navigation). A parent component can watch for changes in the route to fetch new data.
 
 Note that queries are updated even if the navigation fails (e.g. due to a network failure)
 

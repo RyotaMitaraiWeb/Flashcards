@@ -20,11 +20,7 @@ Renders a ``v-pagination`` that helps with updating a catalogue of decks when in
 
 ``total`` represents the total amount of decks that the server can theoritically retrieve for this request. The paginator uses this to generate the length of the paginator. The server associated with this project serves six decks per page (therefore, the amount of pages will be ``total / 6`` rounded to the bigger number).
 
-Clicking a new page will cause the following (in that order):
-* the URL's ``page`` query will be updated with the new page's number (this also updates the history state, thus this will be counted as a separate navigation).
-* the paginator sends a ``GET`` request to the server for the given ``endpoint``.
-* * If the paginator successfully retrieves a list (aka it gets status code 200), the paginator will emit an ``updatePage`` event, passing the list as an argument.
-* * Otherwise, a snackbar will be displayed with the appropriate error
+When interacting with the paginator, the URL's ``page`` query will be updated with the new page's number (this also updates the history state, thus this will be counted as a separate navigation). A parent component can watch for changes in the route to fetch new data.
 
 Note that queries are updated even if the navigation fails (e.g. due to a network failure)
 
