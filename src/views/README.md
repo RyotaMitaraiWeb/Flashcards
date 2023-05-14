@@ -1,5 +1,10 @@
 # Index pages
 
+## Home
+When the user is logged in, this page displays all decks they have bookmarked. When they are not logged in, it will display a message prompting the user to authenticate.
+
+If the user is logged in, but decks cannot be retrieved, an error message will be displayed.
+
 ## Register
 This page is used by users to register their accounts.
 

@@ -7,6 +7,7 @@ import LogoutVue from '../views/Logout.vue';
 import PageNotFoundVue from '../views/PageNotFound.vue';
 import { IsLoggedInGuard } from '../guards/isLoggedIn/isLoggedIn';
 import { deckRoutes } from './decks';
+import { getBookmarkedDecks } from './resolvers/getBookmarkedDecks/getBookmarkedDecks';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,7 +15,8 @@ const router = createRouter({
     {
       path: '/',
       component: HomeVue,
-      name: 'home'
+      name: 'home',
+      beforeEnter: [getBookmarkedDecks]
     },
     {
       path: '/login',
