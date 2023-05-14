@@ -39,7 +39,7 @@ test.describe('All decks page', () => {
     page.getByText('No decks found!');
   });
 
-  test.only('Renders properly', async ({ page }) => {
+  test('Renders properly', async ({ page }) => {
     await page.route(searchEndpoint('Deck'), async (route) => {
       await route.fulfill(deckCatalogueSeed(20, 6));
     });
