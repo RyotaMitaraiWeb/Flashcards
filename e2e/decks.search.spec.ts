@@ -10,7 +10,7 @@ const homePage = `${client}/`;
 const sessionEndpoint = api.endpoints.accounts.session;
 const searchEndpoint = (title: string) => api.endpoints.decks.search(title);
 
-test.describe('All decks page', () => {
+test.describe('Search results page', () => {
   let searchField: Locator;
   test.beforeEach(async ({ page }) => {
     await page.route(sessionEndpoint, async (route) => {

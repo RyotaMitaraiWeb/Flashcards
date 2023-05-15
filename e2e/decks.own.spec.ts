@@ -10,7 +10,7 @@ const ownPage = `${client}/decks/own`;
 const sessionEndpoint = api.endpoints.accounts.session;
 const ownEndpoint = api.endpoints.decks.own;
 
-test.describe('All decks page', () => {
+test.describe('Own decks page', () => {
   test('Shows special message if there are no results', async ({ page }) => {
     await page.route(sessionEndpoint, async (route) => {
       await route.fulfill(authorizeRequest());

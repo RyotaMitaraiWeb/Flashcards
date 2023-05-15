@@ -10,7 +10,7 @@ const homePage = `${client}/`;
 const sessionEndpoint = api.endpoints.accounts.session;
 const bookmarkEndpoint = api.endpoints.bookmarks.saved;
 
-test.describe('Login page', () => {
+test.describe('Home page', () => {
   test('Displays correct text for guests', async ({ page }) => {
     await page.route(sessionEndpoint, async (route) => {
       await route.fulfill(rejectRequest());
@@ -75,7 +75,7 @@ test.describe('Login page', () => {
     await page.getByText('Please refresh and try again!').waitFor();
   });
 
-  test.only('Displays properly for logged in users (network failure after logging in)', async ({ page }) => {
+  test('Displays properly for logged in users (network failure after logging in)', async ({ page }) => {
     await page.route(sessionEndpoint, async (route) => {
       await route.fulfill(authorizeRequest());
     });
