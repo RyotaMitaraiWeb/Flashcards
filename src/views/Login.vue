@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import Field from '../components/Field/Field.vue';
 import { post } from '../util/request/request';
@@ -11,6 +12,7 @@ import { invalidActionsMessages } from '../constants/invalidActionsMessages';
 import Submit from '../components/Submit/Submit.vue';
 import { useLoadingStore } from '../stores/loading/loading';
 import { successActionsMessages } from '../constants/successActionsMessages';
+import { ref } from 'vue';
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -19,14 +21,17 @@ const loadingStore = useLoadingStore();
 
 document.title = 'Login';
 
-async function login(event: Event) {
-  const target = event.target as HTMLFormElement;
-  const form = new FormData(target);
+const username = ref('');
+const password = ref('');
 
-  const [username, password] = form.values();
+async function login() {
+  const body = {
+    username: username.value,
+    password: password.value,
+  };
 
   try {
-    const { res, data } = await post<ICreatedSession>(api.endpoints.accounts.login, { username, password });
+    const { res, data } = await post<ICreatedSession>(api.endpoints.accounts.login, body);
     if (res.status === HttpStatus.CREATED) {
       const { user, token } = data!;
 
@@ -56,10 +61,10 @@ async function login(event: Event) {
     <h1>Login</h1>
     <v-form @submit.prevent="login" id="login">
       <div class="field-section">
-        <Field label="Username" name="username" hint="" type="text"></Field>
+        <Field label="Username" name="username" hint="" type="text" v-model="username"></Field>
       </div>
       <div class="field-section">
-        <Field label="Password" name="password" hint="" type="password"></Field>
+        <Field label="Password" name="password" hint="" type="password" v-model="password"></Field>
       </div>
       <div class="field-section">
         <Submit icon="mdi-login-variant">Login</Submit>

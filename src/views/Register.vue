@@ -21,6 +21,8 @@ document.title = 'Register';
 
 const usernameIsValid = ref(false);
 const passwordIsValid = ref(false);
+const username = ref('');
+const password = ref('');
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -37,14 +39,14 @@ const {
   alphanumericUsername,
 } = accountValidator;
 
-async function register(event: Event) {
-  const target = event.target as HTMLFormElement;
-  const form = new FormData(target);
-
-  const [username, password] = form.values();
+async function register() {
+  const body = {
+    username: username.value,
+    password: password.value,
+  }
 
   try {
-    const { res, data } = await post<ICreatedSession>(api.endpoints.accounts.register, { username, password });
+    const { res, data } = await post<ICreatedSession>(api.endpoints.accounts.register, body);
     if (res.status === HttpStatus.CREATED) {
       const { user, token } = data!;
 
@@ -66,6 +68,14 @@ async function register(event: Event) {
     loadingStore.stopLoading();
   }
 }
+
+function validateUsername(value: boolean) {
+  usernameIsValid.value = value;  
+}
+
+function validatePassword(value: boolean) {
+  passwordIsValid.value = value;
+}
 </script>
 
 <template>
@@ -76,12 +86,14 @@ async function register(event: Event) {
         <Field label="Username" name="username"
           hint="Username must be between 5 and 15 characters long, unique, and alphanumeric" type="text"
           :counter="maxUsernameLengthRule" :rules="[minUsernameLength, maxUsernameLength, alphanumericUsername, uniqueUsername]"
-          display-max-counter v-model="usernameIsValid">
+          display-max-counter v-model="username"
+          @validate-field="validateUsername"
+        >
         </Field>
       </div>
       <div class="field-section">
         <Field label="Password" name="password" hint="Password must be at least 6 characters long" type="password"
-          :counter="6" :rules="[minPasswordLength]" v-model="passwordIsValid">
+          :counter="6" :rules="[minPasswordLength]" v-model="password" @validate-field="validatePassword">
         </Field>
       </div>
       <div class="field-section">
