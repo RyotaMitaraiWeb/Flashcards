@@ -1,4 +1,4 @@
-import {  describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/vue';
 
 import { createVuetify } from 'vuetify';
@@ -12,6 +12,22 @@ const vuetify = createVuetify({
 });
 
 describe('Field component', () => {
+  beforeEach(() => {
+    // prevent ResizeObserver not defined error, this isn't testing any resizing
+    beforeEach(() => {
+      global.ResizeObserver = class ResizeObserver {
+        observe() {
+          // do nothing
+        }
+        unobserve() {
+          // do nothing
+        }
+        disconnect() {
+          // do nothing
+        }
+      };
+    });
+  });
   it('Renders correctly (no max value counter displayed)', async () => {
     const { container, emitted } = render(Field, {
       global: {
@@ -55,6 +71,45 @@ describe('Field component', () => {
     screen.findByText('0 / 15');
   });
 
+  it('Renders correctly (standard input field)', async () => {
+    render(Field, {
+      global: {
+        plugins: [vuetify],
+      },
+      props: {
+        label: 'Some label',
+        name: 'username',
+        hint: 'some hint',
+        type: 'text',
+        counter: 15,
+        displayMaxCounter: true,
+      }
+    });
+
+    const field = document.querySelector('input');
+    expect(field).not.toBeNull();
+  });
+
+  it('Renders correctly (textarea)', async () => {
+    render(Field, {
+      global: {
+        plugins: [vuetify],
+      },
+      props: {
+        label: 'Some label',
+        name: 'username',
+        hint: 'some hint',
+        type: 'text',
+        counter: 15,
+        displayMaxCounter: true,
+        textarea: true,
+      }
+    });
+
+    const textarea = document.querySelector('textarea');
+    expect(textarea).not.toBeNull();
+  });
+
   it('Validates successfully', async () => {
     function invalid(value: string = 'a') {
       return 'error message';
@@ -76,7 +131,7 @@ describe('Field component', () => {
         counter: 15,
         displayMaxCounter: true,
         rules: [invalid, invalidAsync],
-        modelValue: false,
+        modelValue: '',
       }
     });
 

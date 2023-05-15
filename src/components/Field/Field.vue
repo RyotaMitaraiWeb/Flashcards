@@ -2,7 +2,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { ValidatorFunction } from '../../types/util/validators';
-import { watch } from 'vue';
 
 export interface IField {
   label: string;
@@ -12,17 +11,18 @@ export interface IField {
   type: 'text' | 'password';
   counter?: number;
   displayMaxCounter?: boolean;
-  modelValue?: boolean;
+  modelValue?: string;
+  textarea?: boolean;
 }
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['validateField', 'update:modelValue']);
 
 const props = defineProps<IField>();
 let errorMessages = ref([] as string[]);
 
-const input = ref('');
+const input = ref(props.modelValue);
 
-watch(input, async () => {
+async function validate() {
   const errors: string[] = [];
   if (props.rules) {
     for (const fn of props.rules) {
@@ -33,27 +33,29 @@ watch(input, async () => {
     }
 
     errorMessages.value = errors;
-    emit('update:modelValue', errorMessages.value.length === 0);
+    emit('validateField', errorMessages.value.length === 0);
   }
 
-});
+  emit('update:modelValue', input.value);
+}
 </script>
 
 <template>
-  <v-text-field class="field" 
-    :label="props.label" 
-    :name="props.name"
-    persistent-hint 
-    :hint="props.hint" 
-    clearable 
-    v-model="input"
-    :error-messages="errorMessages" 
-    :max-errors="5" 
-    :counter="props.displayMaxCounter ? props.counter : 'counter'"
-    persistent-counter 
-    :type="props.type"
-  >
-  </v-text-field>
+  <template v-if="textarea">
+    <v-textarea class="field" :label="props.label" :name="props.name" persistent-hint :hint="props.hint" clearable
+      v-model="input" :error-messages="errorMessages" :max-errors="5"
+      :counter="props.displayMaxCounter ? props.counter : 'counter'" persistent-counter :type="props.type"
+      @update:model-value="validate" auto-grow>
+
+    </v-textarea>
+  </template>
+  <template v-else>
+    <v-text-field class="field" :label="props.label" :name="props.name" persistent-hint :hint="props.hint" clearable
+      v-model="input" :error-messages="errorMessages" :max-errors="5"
+      :counter="props.displayMaxCounter ? props.counter : 'counter'" persistent-counter :type="props.type"
+      @update:model-value="validate">
+    </v-text-field>
+  </template>
 </template>
 
 <style lang="scss" scoped>
