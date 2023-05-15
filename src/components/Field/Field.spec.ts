@@ -14,7 +14,7 @@ const vuetify = createVuetify({
 describe('Field component', () => {
   beforeEach(() => {
     // prevent ResizeObserver not defined error, this isn't testing any resizing
-    beforeEach(() => {
+  
       global.ResizeObserver = class ResizeObserver {
         observe() {
           // do nothing
@@ -26,8 +26,8 @@ describe('Field component', () => {
           // do nothing
         }
       };
-    });
   });
+  
   it('Renders correctly (no max value counter displayed)', async () => {
     const { container, emitted } = render(Field, {
       global: {
