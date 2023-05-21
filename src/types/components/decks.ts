@@ -67,3 +67,44 @@ export interface ICatalogueDeck {
   createdAt: string;
   updatedAt: string;
 }
+
+/**
+ * ```typescript
+ * interface IUpdateContent {
+    side: 'front' | 'back';
+    value: string;
+  }
+ * ```
+ */
+export interface IUpdateContent {
+  side: 'front' | 'back';
+  value: string;
+}
+
+/**
+ * ```typescript
+ * interface ICreatedDeck {
+    id: number;
+  }
+ * ```
+ */
+export interface ICreatedDeck {
+  id: number;
+}
+
+/**
+ * ```typescript
+ * interface IDeckSubmission {
+    id: number;
+    title: string;
+    description: string;
+    flashcards: IFlashcard[];
+  }
+ * ```
+ */
+export interface IDeckSubmission {
+  id: number;
+  title: string;
+  description: string;
+  flashcards: IFlashcard[];
+}
