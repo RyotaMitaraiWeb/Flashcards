@@ -31,6 +31,29 @@ export function deckSeed(authorId = 1, bookmarked = false) {
   };
 }
 
+export function createDeckSeed() {
+  return {
+    status: HttpStatus.OK,
+    contentType: 'application/json',
+    body: JSON.stringify({
+
+      title: 'Deck title',
+      description: 'Super long description',
+      bookmarked: false,
+      id: 1,
+      authorId: 1,
+      createdAt: '2023-05-02T15:33:39.690Z',
+      updatedAt: '2023-05-02T15:33:39.690Z',
+      flashcards: [
+        {
+          front: 'front text 1',
+          back: 'back text 1'
+        },
+      ]
+    } as IDeck)
+  };
+}
+
 export function deckCatalogueSeed(total: number, number = 1) {
   const decks: ICatalogueDeck[] = [];
 
@@ -52,7 +75,7 @@ export function deckCatalogueSeed(total: number, number = 1) {
     contentType: 'application/json',
     body: JSON.stringify({
       decks,
-      total, 
+      total,
     }),
   };
 }

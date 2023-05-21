@@ -7,6 +7,13 @@ Users can sort the results by the provided options. They can also use the page b
 
 A special message is displayed to the user if there are no decks to be shown whatsoever.
 
+# Create
+This page can be accessed by logged in users. Users are presented with a form for creating a deck. They can provide a title, a description (optional), and each flashcard that they want.
+
+The user can switch between the title/description fields and flashcards section via the two tabs in the upper part of the page. Users can then add and remove flashcards, as well as switch through them via arrow buttons. For viewport widths of > 768px, both the front and back side forms will be displayed. For smaller viewports, the user can instead switch between the different sides with another set of tab buttons on the upper area of the page.
+
+Creating a deck successfully results in the user being redirected to that deck's page. If there are validation errors, the user will be taken to the appropriate section.
+
 ## Search
 This page can be accessed by pressing "Enter" on the menu's search field (as long as the field is not empty). The search page displays all decks whose titles contain the user's input. The search is case insensitive.
 
