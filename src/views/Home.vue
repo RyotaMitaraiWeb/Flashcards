@@ -3,11 +3,18 @@
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '../stores/user/user';
 import CataloguePartial from './Partials/CataloguePartial.vue';
+import { useRoute } from 'vue-router';
+import { watch } from 'vue';
+import type { ICatalogueList } from '../types/components/decks';
 
 document.title = 'Home';
 
 const userStore = storeToRefs(useUserStore());
 const user = userStore.user;
+
+const route = useRoute();
+const decks = route.meta.decks as ICatalogueList | undefined;
+
 </script>
 
 <template>
@@ -23,9 +30,9 @@ const user = userStore.user;
       </p>
     </template>
     <template v-else>
-      <template v-if="$route.meta.decks">
+      <template v-if="decks">
         <h2>Browse your saved decks</h2>
-      <CataloguePartial api-endpoint="/bookmarks"></CataloguePartial>
+        <CataloguePartial api-endpoint="/bookmarks"></CataloguePartial>
       </template>
       <template v-else>
         <h2>An error occurred!</h2>
