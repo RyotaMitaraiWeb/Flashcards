@@ -12,5 +12,7 @@ Methods can be either synchronous or asynchronous.
 ## Types of validators
 Currently, this project has the following validators:
 * ``accountValidator``- validates the username and password during registration.
+* ``deckValidator`` - validates the deck (title, description, minimum amount of flashcards) during creation / editing.
+* ``flashcardValidator`` - validates flashcard content.
 
 You can check each validator's subfolder for more documentation.
