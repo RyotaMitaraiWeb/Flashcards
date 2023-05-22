@@ -14,6 +14,9 @@ The user can switch between the title/description fields and flashcards section 
 
 Creating a deck successfully results in the user being redirected to that deck's page. If there are validation errors, the user will be taken to the appropriate section.
 
+# Edit/:id
+This page is accessible to the creator of the deck with the given ID. If the user is the creator, they are presented with the same form as in the Create page, but populated with the deck's data. If the user is not the creator of the deck, they are redirected to the home page. Guests are instead redirected to the 404 page
+
 ## Search
 This page can be accessed by pressing "Enter" on the menu's search field (as long as the field is not empty). The search page displays all decks whose titles contain the user's input. The search is case insensitive.
 

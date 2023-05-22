@@ -6,8 +6,9 @@ import { getCatalogueDecks } from './resolvers/getCatalogueDecks/getCatalogueDec
 import SearchVue from '../views/Decks/Search.vue';
 import OwnVue from '../views/Decks/Own.vue';
 import { IsLoggedInGuard } from '../guards/isLoggedIn/isLoggedIn';
-import DeckFormVue from '../components/Deck/Form/DeckForm.vue';
 import CreateVue from '../views/Decks/Create.vue';
+import EditVue from '../views/Decks/Edit.vue';
+import { IsOwnerGuard } from '../guards/isOwnerGuard/isOwnerGuard';
 
 export const deckRoutes: RouteRecordRaw[] = [
   {
@@ -27,6 +28,12 @@ export const deckRoutes: RouteRecordRaw[] = [
     component: CreateVue,
     beforeEnter: [IsLoggedInGuard],
     name: 'create',
+  },
+  {
+    path: '/decks/:id/edit',
+    component: EditVue,
+    beforeEnter: [IsLoggedInGuard, getDeck, IsOwnerGuard],
+    name: 'edit',
   },
   {
     path: '/decks/own',
