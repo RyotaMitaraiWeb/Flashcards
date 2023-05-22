@@ -39,7 +39,6 @@ defineProps<IFlashcardBody>();
   .text {
     display: inline-block;
     text-align: left;
-    word-break: break-all;
   }
 
   .big-text {
