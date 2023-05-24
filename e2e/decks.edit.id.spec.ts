@@ -13,7 +13,7 @@ const editEndpoint = api.endpoints.decks.edit(1);
 const detailsEndpoint = api.endpoints.decks.id(1);
 const homePage = `${client}/`;
 
-test.describe.only('Edit deck page', () => {
+test.describe('Edit deck page', () => {
   test.describe('Desktop', async () => {
     test('Redirects to the deck page upon edit successfully', async ({ page }) => {
       await page.route(sessionEndpoint, async (route) => {
