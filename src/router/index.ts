@@ -8,6 +8,7 @@ import PageNotFoundVue from '../views/PageNotFound.vue';
 import { IsLoggedInGuard } from '../guards/isLoggedIn/isLoggedIn';
 import { deckRoutes } from './decks';
 import { getBookmarkedDecks } from './resolvers/getBookmarkedDecks/getBookmarkedDecks';
+import { accountRoutes } from './account';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,7 @@ const router = createRouter({
     },
     
     ...deckRoutes,
+    ...accountRoutes,
 
     {
       path: '/page-not-found',
