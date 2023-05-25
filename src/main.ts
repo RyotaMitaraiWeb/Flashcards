@@ -19,20 +19,28 @@ import { api } from './constants/api';
 import { HttpStatus } from './constants/httpstatus';
 import { useUserStore } from './stores/user/user';
 import { post } from './util/request/request';
+import { useSnackbarStore } from './stores/snackbar/snackbar';
+import { invalidActionsMessages } from './constants/invalidActionsMessages';
 
 const app = createApp(App);
 app.use(createPinia());
 
 const userStore = useUserStore();
+const snackbar = useSnackbarStore();
 
 const { setUser, restartUser } = userStore;
 
-const { res, data } = await post<ICreatedSession>(api.endpoints.accounts.session);
-if (res.status === HttpStatus.CREATED) {
-  const { user, token } = data!;
-  setUser(user);
-  localStorage.setItem('accessToken', token);
-} else {
+try {
+  const { res, data } = await post<ICreatedSession>(api.endpoints.accounts.session);
+  if (res.status === HttpStatus.CREATED) {
+    const { user, token } = data!;
+    setUser(user);
+    localStorage.setItem('accessToken', token);
+  } else {
+    restartUser();
+  }
+} catch {
+  snackbar.open(invalidActionsMessages.requestFailed, 'error');
   restartUser();
 }
 
