@@ -74,6 +74,7 @@ function changePalette() {
     border-radius: 30px;
     color: transparent;
     user-select: none;
+    transition: border-color 0.2s;
   }
 
   .radio {
@@ -91,6 +92,7 @@ function changePalette() {
 
   h2 {
     font-size: 12pt;
+    transition: color 0.2s;
   }
 }
 </style>
