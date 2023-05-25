@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import HeaderActions from './HeaderActions/HeaderActions.vue';
 import { useUserStore } from '../../stores/user/user';

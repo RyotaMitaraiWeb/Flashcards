@@ -21,7 +21,7 @@ const router = createRouter({
     { path: '/login', component: HomeVue },
     { path: '/', component: HomeVue },
     { path: '/logout', component: HomeVue },
-    { path: '/account/decks', component: HomeVue },
+    { path: '/decks/own', component: HomeVue },
     { path: '/account/settings', component: HomeVue },
     { path: '/register', component: HomeVue },
     { path: '/decks/all', component: HomeVue },
