@@ -7,7 +7,7 @@ import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import { useUserStore } from '../../stores/user/user';
-import { createTestingPinia } from "@pinia/testing";
+import { createTestingPinia } from '@pinia/testing';
 import Header from './HeaderTestWrapper.test.vue';
 
 const vuetify = createVuetify({

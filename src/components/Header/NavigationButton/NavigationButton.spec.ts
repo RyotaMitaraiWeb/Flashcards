@@ -24,7 +24,7 @@ describe('NavigationButton', () => {
     render(NavigationButton, {
       global: {
         plugins: [vuetify, pinia],
-      }
+      },
     });
 
     const element = await screen.findByLabelText('Open menu');

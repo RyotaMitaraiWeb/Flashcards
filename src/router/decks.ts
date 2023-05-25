@@ -46,5 +46,5 @@ export const deckRoutes: RouteRecordRaw[] = [
     component: DetailsVue,
     beforeEnter: [getDeck],
     name: 'details',
-  }
+  },
 ];

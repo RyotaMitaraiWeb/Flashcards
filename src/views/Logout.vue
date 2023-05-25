@@ -24,10 +24,9 @@ onMounted(async () => {
 
       userStore.restartUser();
       localStorage.removeItem('accessToken');
-
     } else if (res.status === HttpStatus.UNAUTHORIZED) {
       router.push('/login');
-      snackbar.open(data!.message, 'error')
+      snackbar.open(data!.message, 'error');
     } else {
       snackbar.open(invalidActionsMessages.requestFailed, 'error');
       router.push('/');

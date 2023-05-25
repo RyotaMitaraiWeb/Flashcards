@@ -16,7 +16,7 @@ describe('LeftArrow component', () => {
     render(LeftArrowVue, {
       global: {
         plugins: [vuetify],
-      }
+      },
     });
 
     await screen.findByLabelText('Move to previous flashcard');

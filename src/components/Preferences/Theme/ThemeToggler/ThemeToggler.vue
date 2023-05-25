@@ -9,13 +9,13 @@ const theme = ref(getLocalStorageTheme());
 function updateTheme() {
   const newTheme = theme.value === 'dark' ? 'light' : 'dark';
   localStorage.setItem('theme', newTheme);
-  theme.value = newTheme;  
+  theme.value = newTheme;
   themeStore.global.name.value = newTheme;
 }
 </script>
 
 <template>
-  <v-switch 
+  <v-switch
     :model-value="theme === 'dark'"
     @update:model-value="updateTheme"
     true-icon="mdi-moon-waxing-crescent"

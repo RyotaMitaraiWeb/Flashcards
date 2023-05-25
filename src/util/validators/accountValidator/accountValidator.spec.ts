@@ -10,11 +10,11 @@ describe('accountValidator', () => {
   beforeEach(() => {
     setActivePinia(createPinia());
   });
-  
+
   describe('minUsernameLength', () => {
     it('Returns true if validation passes', () => {
       const input = 'a'.repeat(username.minLength);
-      
+
       const result = accountValidator.minUsernameLength(input);
       expect(result).toBe(true);
     });
@@ -33,7 +33,7 @@ describe('accountValidator', () => {
   describe('maxUsernameLength', () => {
     it('Returns true if validation passes', () => {
       const input = 'a'.repeat(username.maxLength);
-      
+
       const result = accountValidator.maxUsernameLength(input);
       expect(result).toBe(true);
 
@@ -52,7 +52,7 @@ describe('accountValidator', () => {
   describe('minPasswordLength', () => {
     it('Returns true if validation passes', () => {
       const input = 'a'.repeat(password.minLength);
-      
+
       const result = accountValidator.minPasswordLength(input);
       expect(result).toBe(true);
     });
@@ -117,7 +117,7 @@ describe('accountValidator', () => {
   describe('alphanumericUsername', () => {
     it('Returns true if validation passes', () => {
       const input = '1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
-      
+
       const result = accountValidator.alphanumericUsername(input);
       expect(result).toBe(true);
     });

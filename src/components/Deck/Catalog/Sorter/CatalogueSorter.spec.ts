@@ -26,8 +26,8 @@ const router = createRouter({
     {
       path: '/',
       component: HomeVue,
-    }
-  ]
+    },
+  ],
 });
 
 describe('CatalogueSorter component', () => {
@@ -35,10 +35,10 @@ describe('CatalogueSorter component', () => {
     const pinia = createTestingPinia({
       stubActions: false,
     });
-    
+
     render(CatalogueSorterVue, {
       global: {
-        plugins: [vuetify, router, pinia]
+        plugins: [vuetify, router, pinia],
       },
       props: {
         sortBy: 'title',

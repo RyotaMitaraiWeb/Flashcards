@@ -7,7 +7,6 @@ import type { ValidatorFunction } from '../../../types/util/validators';
 const accountRules = validationRules.account;
 const accountMessages = validationErrorMessages.account;
 
-
 export const accountValidator = {
   minUsernameLength(value: string = ''): string | boolean {
     return value.length >= accountRules.username.minLength || accountMessages.username.isTooShort;
@@ -33,6 +32,6 @@ export const accountValidator = {
   },
 
   alphanumericUsername(value: string = ''): string | boolean {
-    return /^[a-z0-9]+$/gmi.test(value) || accountMessages.username.isNotAlphanumeric;
-  }
-}
+    return /^[a-z0-9]+$/gim.test(value) || accountMessages.username.isNotAlphanumeric;
+  },
+};

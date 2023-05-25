@@ -18,7 +18,7 @@ function deckSeed(n: number = 1, text = '') {
     flashcards[i] = {
       front: text,
       back: text,
-    }
+    };
   }
 
   return flashcards;
@@ -43,7 +43,7 @@ describe('FlashcardForm component', () => {
         },
         props: {
           flashcards: deckSeed(5, 'flashcard test'),
-        }
+        },
       });
 
       await screen.findByText('1 / 5');
@@ -81,7 +81,7 @@ describe('FlashcardForm component', () => {
         },
         props: {
           flashcards: deckSeed(2),
-        }
+        },
       });
 
       const nextButton = await screen.findByLabelText('Move to next flashcard');
@@ -132,7 +132,7 @@ describe('FlashcardForm component', () => {
         },
         props: {
           flashcards: deckSeed(5),
-        }
+        },
       });
 
       const textarea = document.querySelector('textarea');

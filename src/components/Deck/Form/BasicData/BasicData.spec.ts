@@ -33,7 +33,7 @@ describe('Field component', () => {
     render(BasicDataVue, {
       global: {
         plugins: [vuetify],
-      }
+      },
     });
 
     const titleField = await screen.findByLabelText('Title');
@@ -59,7 +59,7 @@ describe('Field component', () => {
       props: {
         title: 'initial title',
         description: 'initial description',
-      }
+      },
     });
 
     const titleField = await screen.findByLabelText('Title');
@@ -92,9 +92,11 @@ describe('Field component', () => {
 
     await screen.findByText(validationErrorMessages.deck.title.isTooLong);
 
-
     const descriptionField = await screen.findByLabelText('Description');
-    await fireEvent.update(descriptionField, 'a'.repeat(validationRules.deck.description.maxLength + 1));
+    await fireEvent.update(
+      descriptionField,
+      'a'.repeat(validationRules.deck.description.maxLength + 1)
+    );
 
     await screen.findByText(validationErrorMessages.deck.description.isTooLong);
   });

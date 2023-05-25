@@ -16,7 +16,7 @@ describe('LeftArrow component', () => {
     render(FlashcardHeadVue, {
       global: {
         plugins: [vuetify],
-      }
+      },
     });
 
     const head = document.querySelector('.flashcard-head');

@@ -28,7 +28,6 @@ async function paginate() {
     },
   });
 }
-
 </script>
 
 <template>

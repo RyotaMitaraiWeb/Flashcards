@@ -1,10 +1,10 @@
-import {  describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/vue';
 
 import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
-import { createTestingPinia } from "@pinia/testing";
+import { createTestingPinia } from '@pinia/testing';
 import Snackbar from './Snackbar.vue';
 import { useSnackbarStore } from '../../stores/snackbar/snackbar';
 
@@ -22,7 +22,7 @@ describe('Snackbar component', () => {
     });
 
     const store = useSnackbarStore();
-    store.open('snackbar message', 'error')
+    store.open('snackbar message', 'error');
 
     const { container } = render(Snackbar, {
       global: {
@@ -32,7 +32,7 @@ describe('Snackbar component', () => {
 
     screen.getByText('snackbar message');
     const p = document.querySelectorAll('p');
-    
+
     expect(p.length).toBe(1);
   });
 
@@ -41,7 +41,7 @@ describe('Snackbar component', () => {
       stubActions: false,
     });
     const store = useSnackbarStore();
-    store.open(['snackbar', 'message'], 'error')
+    store.open(['snackbar', 'message'], 'error');
 
     const { container } = render(Snackbar, {
       global: {
@@ -59,7 +59,7 @@ describe('Snackbar component', () => {
     const pinia = createTestingPinia({
       stubActions: false,
     });
-    
+
     const { container } = render(Snackbar, {
       global: {
         plugins: [vuetify, pinia],

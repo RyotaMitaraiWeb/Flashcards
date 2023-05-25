@@ -18,7 +18,7 @@ function deckSeed(n: number = 1, text = '') {
     flashcards[i] = {
       front: text,
       back: text,
-    }
+    };
   }
 
   return flashcards;
@@ -43,7 +43,7 @@ describe('MobileFlashcardForm component', () => {
         },
         props: {
           flashcards: deckSeed(5, 'flashcard test'),
-        }
+        },
       });
 
       await screen.findByText('1 / 5');
@@ -110,7 +110,7 @@ describe('MobileFlashcardForm component', () => {
         },
         props: {
           flashcards: deckSeed(2),
-        }
+        },
       });
 
       const nextButton = await screen.findByLabelText('Move to next flashcard');
@@ -161,7 +161,7 @@ describe('MobileFlashcardForm component', () => {
         },
         props: {
           flashcards: deckSeed(5),
-        }
+        },
       });
 
       const backSide = document.querySelector('.flashcard-input-wrapper.back') as HTMLElement;
@@ -184,7 +184,7 @@ describe('MobileFlashcardForm component', () => {
         },
         props: {
           flashcards: deckSeed(5),
-        }
+        },
       });
 
       const backSide = document.querySelector('.flashcard-input-wrapper.back') as HTMLElement;
@@ -205,7 +205,7 @@ describe('MobileFlashcardForm component', () => {
         },
         props: {
           flashcards: deckSeed(5),
-        }
+        },
       });
 
       const textarea = document.querySelector('textarea');
@@ -315,7 +315,7 @@ describe('MobileFlashcardForm component', () => {
         },
         props: {
           flashcards: deckSeed(5),
-        }
+        },
       });
 
       const deleteButton = await screen.findByText('Delete');

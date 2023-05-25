@@ -45,10 +45,16 @@ async function deleteDeck() {
 </script>
 
 <template>
-  <v-btn :disabled="loadingStore.loading.status" variant="flat" color="red" class="delete-btn action-btn" @click.prevent="deleteDeck">
+  <v-btn
+    :disabled="loadingStore.loading.status"
+    variant="flat"
+    color="red"
+    class="delete-btn action-btn"
+    @click.prevent="deleteDeck"
+  >
     <template v-slot:prepend>
-        <v-icon icon="mdi-trash-can"></v-icon>
-      </template>
+      <v-icon icon="mdi-trash-can"></v-icon>
+    </template>
     Delete
   </v-btn>
 </template>

@@ -37,7 +37,7 @@ watch(route, async () => {
   try {
     const { res, data } = await get<ICatalogueList>(api.root + props.apiEndpoint + queries);
     if (!res.ok) {
-      const errors = (data as unknown) as IHttpError;
+      const errors = data as unknown as IHttpError;
       snackbar.open(errors.message, 'error');
     } else {
       list.value = data!;
@@ -46,8 +46,6 @@ watch(route, async () => {
     snackbar.open(invalidActionsMessages.requestFailed, 'error');
   }
 });
-
-
 </script>
 
 <template>

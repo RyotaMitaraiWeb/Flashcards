@@ -6,8 +6,7 @@ const { smAndUp } = useDisplay();
 
 <template>
   <RouterLink to="/account/settings" v-if="smAndUp">
-    <v-btn icon="mdi-cog" color="white" tag="span" variant="plain" class="gear">
-    </v-btn>
+    <v-btn icon="mdi-cog" color="white" tag="span" variant="plain" class="gear"> </v-btn>
     <v-tooltip text="Settings" activator="parent" location="bottom right"></v-tooltip>
   </RouterLink>
 </template>

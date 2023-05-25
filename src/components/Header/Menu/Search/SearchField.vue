@@ -19,8 +19,17 @@ function search(event: Event) {
 
 <template>
   <form @submit="search" id="search">
-    <v-text-field v-model="input" variant="outlined" label="Search decks by title" name="search" counter
-      hint="The search is case insensitive" persistent-hint clearable prepend-inner-icon="mdi-magnify">
+    <v-text-field
+      v-model="input"
+      variant="outlined"
+      label="Search decks by title"
+      name="search"
+      counter
+      hint="The search is case insensitive"
+      persistent-hint
+      clearable
+      prepend-inner-icon="mdi-magnify"
+    >
     </v-text-field>
   </form>
 </template>

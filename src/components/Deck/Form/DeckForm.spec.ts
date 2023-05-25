@@ -18,11 +18,13 @@ const vuetify = createVuetify({
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [{
-    path: '/',
-    component: HomeVue,
-  }]
-})
+  routes: [
+    {
+      path: '/',
+      component: HomeVue,
+    },
+  ],
+});
 
 function deckSeed(n: number = 1, text = '') {
   const flashcards: IFlashcard[] = [];
@@ -31,7 +33,7 @@ function deckSeed(n: number = 1, text = '') {
     flashcards[i] = {
       front: text,
       back: text,
-    }
+    };
   }
 
   return flashcards;
@@ -61,11 +63,11 @@ describe('DeckForm component', () => {
 
       render(DeckFormVue, {
         props: {
-          context: 'create'
+          context: 'create',
         },
         global: {
-          plugins: [vuetify, pinia, router]
-        }
+          plugins: [vuetify, pinia, router],
+        },
       });
 
       await screen.findByText('Create a new deck!');
@@ -85,11 +87,11 @@ describe('DeckForm component', () => {
             description: 'some description',
             flashcards: deckSeed(2, 'flashcard test'),
             id: 1,
-          }
+          },
         },
         global: {
-          plugins: [vuetify, pinia, router]
-        }
+          plugins: [vuetify, pinia, router],
+        },
       });
 
       await screen.findByText('Edit some deck title!');
@@ -105,8 +107,8 @@ describe('DeckForm component', () => {
       await fireEvent.click(tab);
 
       const flashcards = Array.from(document.querySelectorAll('textarea'))
-        .map(t => t.value)
-        .filter(v => v === 'flashcard test');
+        .map((t) => t.value)
+        .filter((v) => v === 'flashcard test');
 
       expect(flashcards.length).toBe(2);
       await screen.findByText('1 / 2');
@@ -121,11 +123,11 @@ describe('DeckForm component', () => {
 
       render(DeckFormVue, {
         props: {
-          context: 'create'
+          context: 'create',
         },
         global: {
-          plugins: [vuetify, pinia, router]
-        }
+          plugins: [vuetify, pinia, router],
+        },
       });
 
       const basicTab = await screen.findByLabelText('Manage title and description');
@@ -146,11 +148,11 @@ describe('DeckForm component', () => {
 
       render(DeckFormVue, {
         props: {
-          context: 'create'
+          context: 'create',
         },
         global: {
-          plugins: [vuetify, pinia, router]
-        }
+          plugins: [vuetify, pinia, router],
+        },
       });
 
       const basicTab = await screen.findByLabelText('Manage title and description');
@@ -175,21 +177,21 @@ describe('DeckForm component', () => {
     });
 
     it('Does not make requests and switches to basic tab if one of the fields there is invalid', async () => {
-      vi.spyOn(requestFunctions, 'post').mockImplementation(async () => { 
-        return { res: new Response(), data: undefined}
+      vi.spyOn(requestFunctions, 'post').mockImplementation(async () => {
+        return { res: new Response(), data: undefined };
       });
 
-      vi.spyOn(requestFunctions, 'put').mockImplementation(async () => { 
-        return { res: new Response(), data: undefined}
+      vi.spyOn(requestFunctions, 'put').mockImplementation(async () => {
+        return { res: new Response(), data: undefined };
       });
 
       render(DeckFormVue, {
         props: {
-          context: 'create'
+          context: 'create',
         },
         global: {
-          plugins: [vuetify, pinia, router]
-        }
+          plugins: [vuetify, pinia, router],
+        },
       });
 
       const flashcardsTab = await screen.findByLabelText('Manage flashcards');
@@ -211,26 +213,26 @@ describe('DeckForm component', () => {
     });
 
     it('Does not make requests and switches to flashcards tab if one of the fields there is invalid', async () => {
-      vi.spyOn(requestFunctions, 'post').mockImplementation(async () => { 
-        return { res: new Response(), data: undefined}
+      vi.spyOn(requestFunctions, 'post').mockImplementation(async () => {
+        return { res: new Response(), data: undefined };
       });
 
-      vi.spyOn(requestFunctions, 'put').mockImplementation(async () => { 
-        return { res: new Response(), data: undefined}
+      vi.spyOn(requestFunctions, 'put').mockImplementation(async () => {
+        return { res: new Response(), data: undefined };
       });
 
       render(DeckFormVue, {
         props: {
-          context: 'create'
+          context: 'create',
         },
         global: {
-          plugins: [vuetify, pinia, router]
-        }
+          plugins: [vuetify, pinia, router],
+        },
       });
 
       const titleField = await screen.findByLabelText('Title');
       await fireEvent.update(titleField, 'some title');
-    
+
       const descriptionField = await screen.findByLabelText('Description');
       await fireEvent.update(descriptionField, 'some description');
 
@@ -246,11 +248,11 @@ describe('DeckForm component', () => {
     it('Prioritizes the basic data section if both sections have validation errors', async () => {
       render(DeckFormVue, {
         props: {
-          context: 'create'
+          context: 'create',
         },
         global: {
-          plugins: [vuetify, pinia, router]
-        }
+          plugins: [vuetify, pinia, router],
+        },
       });
 
       const submit = await screen.findByText('Create Deck');
@@ -260,30 +262,30 @@ describe('DeckForm component', () => {
     });
 
     it('Makes a request to correct endpoint when context is create', async () => {
-      vi.spyOn(requestFunctions, 'post').mockImplementation(async () => { 
-        return { res: new Response(), data: undefined}
+      vi.spyOn(requestFunctions, 'post').mockImplementation(async () => {
+        return { res: new Response(), data: undefined };
       });
 
-      vi.spyOn(requestFunctions, 'put').mockImplementation(async () => { 
-        return { res: new Response(), data: undefined}
+      vi.spyOn(requestFunctions, 'put').mockImplementation(async () => {
+        return { res: new Response(), data: undefined };
       });
 
       vi.spyOn(router, 'push').mockImplementation(async () => {});
 
       render(DeckFormVue, {
         props: {
-          context: 'create'
+          context: 'create',
         },
         global: {
-          plugins: [vuetify, pinia, router]
-        }
+          plugins: [vuetify, pinia, router],
+        },
       });
 
       const flashcardsTab = await screen.findByLabelText('Manage flashcards');
 
       const titleField = await screen.findByLabelText('Title');
       await fireEvent.update(titleField, 'some title');
-    
+
       const descriptionField = await screen.findByLabelText('Description');
       await fireEvent.update(descriptionField, 'some description');
 
@@ -302,12 +304,12 @@ describe('DeckForm component', () => {
     });
 
     it('Makes a request to correct endpoint when context is edit', async () => {
-      vi.spyOn(requestFunctions, 'post').mockImplementation(async () => { 
-        return { res: new Response(), data: undefined}
+      vi.spyOn(requestFunctions, 'post').mockImplementation(async () => {
+        return { res: new Response(), data: undefined };
       });
 
-      vi.spyOn(requestFunctions, 'put').mockImplementation(async () => { 
-        return { res: new Response(), data: undefined}
+      vi.spyOn(requestFunctions, 'put').mockImplementation(async () => {
+        return { res: new Response(), data: undefined };
       });
 
       vi.spyOn(router, 'push').mockImplementation(async () => {});
@@ -319,11 +321,11 @@ describe('DeckForm component', () => {
             title: 'some valid title',
             description: '',
             flashcards: deckSeed(2, 'test flashcard'),
-          }
+          },
         },
         global: {
-          plugins: [vuetify, pinia, router]
-        }
+          plugins: [vuetify, pinia, router],
+        },
       });
 
       const submit = await screen.findByText('Edit Deck');

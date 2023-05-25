@@ -16,8 +16,8 @@ const deck: ICatalogueDeck = {
   description: 'Some description',
   authorId: 1,
   createdAt: '2023-04-22T09:00:36.607Z',
-  updatedAt: '2023-04-22T09:00:36.607Z'
-}
+  updatedAt: '2023-04-22T09:00:36.607Z',
+};
 
 const vuetify = createVuetify({
   components,
@@ -34,15 +34,15 @@ const router = createRouter({
     {
       path: '/',
       component: HomeVue,
-    }
-  ]
+    },
+  ],
 });
 
 describe('CatalogueDeck component', () => {
   it('Renders correctly (has never been updated)', async () => {
     const { container } = render(CatalogueDeckVue, {
       global: {
-        plugins: [vuetify, router]
+        plugins: [vuetify, router],
       },
       props: {
         deck,
@@ -52,7 +52,7 @@ describe('CatalogueDeck component', () => {
     await screen.findByText('Some deck');
     await screen.findByText('Some description');
     await screen.findByText('To deck');
-    await screen.findByText(/^Created on: 22.04.2023$/mi);
+    await screen.findByText(/^Created on: 22.04.2023$/im);
 
     const link = container.querySelector('a');
     expect(link?.href.includes('/decks/1')).toBe(true);
@@ -60,10 +60,10 @@ describe('CatalogueDeck component', () => {
 
   it('Renders correctly (has been updated)', async () => {
     const updatedDeck = { ...deck };
-    updatedDeck.updatedAt = '2023-04-23T09:00:36.607Z'
+    updatedDeck.updatedAt = '2023-04-23T09:00:36.607Z';
     render(CatalogueDeckVue, {
       global: {
-        plugins: [vuetify, router]
+        plugins: [vuetify, router],
       },
       props: {
         deck: updatedDeck,

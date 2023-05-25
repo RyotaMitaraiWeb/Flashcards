@@ -25,5 +25,5 @@ describe('formatQueriesToString', () => {
   it('Returns only the question mark if the query object is empty', () => {
     const result = formatQueriesToString({});
     expect(result).toBe('?');
-  })
+  });
 });

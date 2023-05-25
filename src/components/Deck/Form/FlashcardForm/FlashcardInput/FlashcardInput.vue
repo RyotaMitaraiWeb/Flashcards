@@ -47,19 +47,31 @@ function focusToInput() {
     <v-card class="flashcard-input">
       <FlashcardHead @click="focusToInput"></FlashcardHead>
       <v-card-text @click="focusToInput" class="flashcard-textarea">
-        <textarea ref="input" :class="side === 'front' ? 'bold textarea' : 'textarea'"
-          :value="props.content" @input.prevent="update" :maxlength="validationRules.flashcard.sideMaxLength"
-          :aria-label="`Flashcard content for ${side} side`"></textarea>
+        <textarea
+          ref="input"
+          :class="side === 'front' ? 'bold textarea' : 'textarea'"
+          :value="props.content"
+          @input.prevent="update"
+          :maxlength="validationRules.flashcard.sideMaxLength"
+          :aria-label="`Flashcard content for ${side} side`"
+        ></textarea>
       </v-card-text>
     </v-card>
     <p>{{ content.length }} / {{ validationRules.flashcard.sideMaxLength }}</p>
 
-    <p class="error-text" :style="{ 'color': error }" v-show="typeof minSideLength(content) === 'string'">Please fill this side!</p>
+    <p
+      class="error-text"
+      :style="{ color: error }"
+      v-show="typeof minSideLength(content) === 'string'"
+    >
+      Please fill this side!
+    </p>
   </div>
 </template>
 
 <style lang="scss" scoped>
-h2, p {
+h2,
+p {
   text-align: center;
 }
 .flashcard-input-wrapper {

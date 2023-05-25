@@ -9,7 +9,7 @@ export const validationRules = Object.freeze({
     },
     password: {
       minLength: 6,
-    }
+    },
   },
   deck: {
     title: {

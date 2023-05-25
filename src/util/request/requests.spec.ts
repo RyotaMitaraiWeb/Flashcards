@@ -7,7 +7,7 @@ describe('Requests', () => {
   beforeEach(() => {
     setActivePinia(createPinia());
   });
-  
+
   describe('get', () => {
     it('Returns response and data of type T successfully', async () => {
       vi.spyOn(global, 'fetch').mockImplementation(async () => {
@@ -15,24 +15,24 @@ describe('Requests', () => {
           status: HttpStatus.OK,
         });
         vi.spyOn(res, 'json').mockImplementation(async () => 1);
-  
+
         return res;
       });
-  
+
       const { res, data } = await get<number>('a');
       expect(data).toBe(1);
       expect(res.status).toBe(HttpStatus.OK);
     });
-  
+
     it('Returns response and data of type undefined successfully when status code is 204', async () => {
       vi.spyOn(global, 'fetch').mockImplementation(async () => {
         const res = new Response(undefined, {
-          status: HttpStatus.NO_CONTENT
+          status: HttpStatus.NO_CONTENT,
         });
-  
+
         return res;
       });
-  
+
       const { res, data } = await get('a');
       expect(data).toBe(undefined);
       expect(res.status).toBe(HttpStatus.NO_CONTENT);
@@ -44,7 +44,7 @@ describe('Requests', () => {
           status: HttpStatus.OK,
         });
         vi.spyOn(res, 'json').mockImplementation(async () => 1);
-  
+
         return res;
       });
 
@@ -65,10 +65,10 @@ describe('Requests', () => {
           status: HttpStatus.OK,
         });
         vi.spyOn(res, 'json').mockImplementation(async () => 1);
-  
+
         return res;
       });
-  
+
       const { res, data } = await post<number>('a');
       expect(data).toBe(1);
       expect(res.status).toBe(HttpStatus.OK);
@@ -77,16 +77,16 @@ describe('Requests', () => {
       expect(data1).toBe(1);
       expect(res1.status).toBe(HttpStatus.OK);
     });
-  
+
     it('Returns response and data of type undefined successfully when status code is 204', async () => {
       vi.spyOn(global, 'fetch').mockImplementation(async () => {
         const res = new Response(undefined, {
-          status: HttpStatus.NO_CONTENT
+          status: HttpStatus.NO_CONTENT,
         });
-  
+
         return res;
       });
-  
+
       const { res, data } = await post('a');
       expect(data).toBe(undefined);
       expect(res.status).toBe(HttpStatus.NO_CONTENT);
@@ -102,7 +102,7 @@ describe('Requests', () => {
           status: HttpStatus.OK,
         });
         vi.spyOn(res, 'json').mockImplementation(async () => 1);
-  
+
         return res;
       });
 
@@ -123,10 +123,10 @@ describe('Requests', () => {
           status: HttpStatus.OK,
         });
         vi.spyOn(res, 'json').mockImplementation(async () => 1);
-  
+
         return res;
       });
-  
+
       const { res, data } = await put<number>('a');
       expect(data).toBe(1);
       expect(res.status).toBe(HttpStatus.OK);
@@ -135,16 +135,16 @@ describe('Requests', () => {
       expect(data1).toBe(1);
       expect(res1.status).toBe(HttpStatus.OK);
     });
-  
+
     it('Returns response and data of type undefined successfully when status code is 204', async () => {
       vi.spyOn(global, 'fetch').mockImplementation(async () => {
         const res = new Response(undefined, {
-          status: HttpStatus.NO_CONTENT
+          status: HttpStatus.NO_CONTENT,
         });
-  
+
         return res;
       });
-  
+
       const { res, data } = await put('a');
       expect(data).toBe(undefined);
       expect(res.status).toBe(HttpStatus.NO_CONTENT);
@@ -160,7 +160,7 @@ describe('Requests', () => {
           status: HttpStatus.OK,
         });
         vi.spyOn(res, 'json').mockImplementation(async () => 1);
-  
+
         return res;
       });
 
@@ -181,24 +181,24 @@ describe('Requests', () => {
           status: HttpStatus.OK,
         });
         vi.spyOn(res, 'json').mockImplementation(async () => 1);
-  
+
         return res;
       });
-  
+
       const { res, data } = await del<number>('a');
       expect(data).toBe(1);
       expect(res.status).toBe(HttpStatus.OK);
     });
-  
+
     it('Returns response and data of type undefined successfully when status code is 204', async () => {
       vi.spyOn(global, 'fetch').mockImplementation(async () => {
         const res = new Response(undefined, {
-          status: HttpStatus.NO_CONTENT
+          status: HttpStatus.NO_CONTENT,
         });
-  
+
         return res;
       });
-  
+
       const { res, data } = await del('a');
       expect(data).toBe(undefined);
       expect(res.status).toBe(HttpStatus.NO_CONTENT);
@@ -210,7 +210,7 @@ describe('Requests', () => {
           status: HttpStatus.OK,
         });
         vi.spyOn(res, 'json').mockImplementation(async () => 1);
-  
+
         return res;
       });
 

@@ -5,16 +5,12 @@ export interface IListToggler {
 
 defineProps<IListToggler>();
 defineEmits(['update:modelValue']);
-
 </script>
 
 <template>
   <v-btn class="list-toggler" :ripple="false" @click="$emit('update:modelValue', !modelValue)">
     <template v-slot:prepend>
-      <span class="start">
-
-        {{ modelValue ? 'Close' : 'Open' }} list of flashcards
-      </span>
+      <span class="start"> {{ modelValue ? 'Close' : 'Open' }} list of flashcards </span>
     </template>
     <template v-slot:append>
       <span class="end">

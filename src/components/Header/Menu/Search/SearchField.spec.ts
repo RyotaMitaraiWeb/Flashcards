@@ -22,17 +22,17 @@ const router = createRouter({
     },
     {
       path: '/',
-      component: HomeVue
-    }
-  ]
-})
+      component: HomeVue,
+    },
+  ],
+});
 
 describe('SearchField', () => {
   it('Renders successfully', async () => {
     const { container } = render(SearchField, {
       global: {
         plugins: [vuetify, router],
-      }
+      },
     });
 
     screen.getAllByText('Search decks by title');
@@ -48,10 +48,10 @@ describe('SearchField', () => {
     const { container } = render(SearchField, {
       global: {
         plugins: [vuetify, router],
-      }
+      },
     });
 
-    vi.spyOn(router, 'push').mockImplementation(async () => { });
+    vi.spyOn(router, 'push').mockImplementation(async () => {});
 
     screen.getAllByText('Search decks by title');
     screen.getByText('The search is case insensitive');
@@ -70,10 +70,10 @@ describe('SearchField', () => {
     const { container } = render(SearchField, {
       global: {
         plugins: [vuetify, router],
-      }
+      },
     });
 
-    vi.spyOn(router, 'push').mockImplementation(async () => { });
+    vi.spyOn(router, 'push').mockImplementation(async () => {});
 
     screen.getAllByText('Search decks by title');
     screen.getByText('The search is case insensitive');

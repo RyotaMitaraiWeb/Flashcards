@@ -35,7 +35,13 @@ async function unbookmark() {
 </script>
 
 <template>
-  <v-btn :disabled="loadingStore.loading.status" color="grey-darken-3" variant="flat" @click.prevent="unbookmark" class="action-btn unbookmark-btn">
+  <v-btn
+    :disabled="loadingStore.loading.status"
+    color="grey-darken-3"
+    variant="flat"
+    @click.prevent="unbookmark"
+    class="action-btn unbookmark-btn"
+  >
     <template v-slot:prepend>
       <v-icon icon="mdi-bookmark" color="yellow"></v-icon>
     </template>

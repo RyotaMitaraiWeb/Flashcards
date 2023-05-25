@@ -15,9 +15,7 @@ const vuetify = createVuetify({
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [
-    { path: '/', component: HomeVue },
-  ],
+  routes: [{ path: '/', component: HomeVue }],
 });
 
 describe('MenuItem', () => {
@@ -31,12 +29,12 @@ describe('MenuItem', () => {
         value: '1',
         to: '/',
         icon: 'mdi-home',
-      }
+      },
     });
 
     screen.getByText('Home');
     const icon = container.querySelector('i.mdi-home');
-    
+
     expect(icon).not.toBeNull();
 
     const link = container.querySelector('a');

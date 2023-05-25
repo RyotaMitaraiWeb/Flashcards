@@ -10,7 +10,6 @@ export interface IDeckInfo {
 
 defineProps<IDeckInfo>();
 defineEmits(['start']);
-
 </script>
 
 <template>

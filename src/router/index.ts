@@ -17,7 +17,7 @@ const router = createRouter({
       path: '/',
       component: HomeVue,
       name: 'home',
-      beforeEnter: [getBookmarkedDecks]
+      beforeEnter: [getBookmarkedDecks],
     },
     {
       path: '/login',
@@ -37,7 +37,7 @@ const router = createRouter({
       beforeEnter: [IsLoggedInGuard],
       name: 'logout',
     },
-    
+
     ...deckRoutes,
     ...accountRoutes,
 

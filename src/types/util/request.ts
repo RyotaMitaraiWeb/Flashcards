@@ -1,9 +1,9 @@
 export type method = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 export interface IRequest {
-  headers: HeadersInit,
-  method: method,
-  body?: any,
+  headers: HeadersInit;
+  method: method;
+  body?: any;
 }
 
 /**
@@ -18,6 +18,6 @@ export interface IRequest {
  * parse).
  */
 export interface IResponse<T> {
-  res: Response,
-  data: T | undefined,
+  res: Response;
+  data: T | undefined;
 }

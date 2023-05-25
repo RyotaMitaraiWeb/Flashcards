@@ -9,7 +9,7 @@ import { computed } from 'vue';
 import LeftArrow from '@/components/Flashcard/Arrows/LeftArrow/LeftArrow.vue';
 
 export interface IStudySession {
-  deck: IDeck
+  deck: IDeck;
 }
 
 const props = defineProps<IStudySession>();
@@ -35,7 +35,7 @@ function increment() {
 }
 
 function decrement() {
-  if(isAboveMinimum.value) {
+  if (isAboveMinimum.value) {
     if (flipped.value) {
       setTimeout(() => {
         i.value--;
@@ -79,7 +79,7 @@ function decrement() {
   flex-direction: row;
   align-items: center;
   gap: 40px;
-  
+
   @media screen and (max-width: 650px) {
     margin-top: 60px;
     gap: 30px;
@@ -112,9 +112,9 @@ function decrement() {
   }
 
   @media screen and (max-width: 360px) {
-      width: 150px;
-      height: 150px;
-    }
+    width: 150px;
+    height: 150px;
+  }
 }
 
 .flashcard-head {
@@ -133,9 +133,9 @@ function decrement() {
   }
 
   @media screen and (max-width: 360px) {
-      width: 150px;
-      height: 35px;
-    }
+    width: 150px;
+    height: 35px;
+  }
 }
 
 .invisible {

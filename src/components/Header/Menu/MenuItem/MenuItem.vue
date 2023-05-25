@@ -11,7 +11,12 @@ const props = defineProps<IMenuItem>();
 
 <template>
   <RouterLink :to="props.to">
-    <v-list-item :title="props.title" :value="props.value" :prepend-icon="props.icon" class="menu-link"></v-list-item>
+    <v-list-item
+      :title="props.title"
+      :value="props.value"
+      :prepend-icon="props.icon"
+      class="menu-link"
+    ></v-list-item>
   </RouterLink>
 </template>
 

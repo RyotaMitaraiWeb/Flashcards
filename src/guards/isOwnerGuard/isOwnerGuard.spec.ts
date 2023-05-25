@@ -13,11 +13,13 @@ const deck: IDeck = {
   authorId: 1,
   createdAt: '2023-04-22T09:00:36.607Z',
   updatedAt: '2023-04-22T09:00:36.607Z',
-  flashcards: [{
-    front: 'a',
-    back: 'a',
-  }],
-}
+  flashcards: [
+    {
+      front: 'a',
+      back: 'a',
+    },
+  ],
+};
 
 const route: RouteLocation = {
   matched: [],
@@ -29,16 +31,16 @@ const route: RouteLocation = {
   params: {},
   redirectedFrom: undefined,
   meta: {
-    deck
-  }
-}
+    deck,
+  },
+};
 
 describe('IsOwnerGuard', () => {
   beforeEach(() => {
     setActivePinia(createPinia());
   });
 
-  it('Returns true if authorId and user\'s id match', () => {
+  it("Returns true if authorId and user's id match", () => {
     const userStore = useUserStore();
     userStore.setUser({ username: 'ryota1', id: 1 });
 

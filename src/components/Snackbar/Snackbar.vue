@@ -7,11 +7,16 @@ const { snackbar } = storeToRefs(snackbarStore);
 const { close } = snackbarStore;
 
 const timeout = Number(import.meta.env.VITE_SNACKBAR_TIMEOUT);
-
 </script>
 
 <template>
-  <v-snackbar class="snackbar" :timeout="timeout" :color="snackbar.status" multi-line v-model="snackbar.open">
+  <v-snackbar
+    class="snackbar"
+    :timeout="timeout"
+    :color="snackbar.status"
+    multi-line
+    v-model="snackbar.open"
+  >
     <template v-if="Array.isArray(snackbar.text)">
       <template v-for="text in snackbar.text">
         <p>{{ text }}</p>
@@ -22,12 +27,7 @@ const timeout = Number(import.meta.env.VITE_SNACKBAR_TIMEOUT);
     </template>
 
     <template v-slot:actions>
-        <v-btn
-          variant="text"
-          @click="close"
-        >
-          Close
-        </v-btn>
-      </template>
+      <v-btn variant="text" @click="close"> Close </v-btn>
+    </template>
   </v-snackbar>
 </template>

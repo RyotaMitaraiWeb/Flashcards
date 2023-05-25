@@ -5,8 +5,7 @@ import HomeVue from '../../../views/Home.vue';
 import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
-import { createTestingPinia } from "@pinia/testing";
-
+import { createTestingPinia } from '@pinia/testing';
 
 import Menu from './MenuTestWrapper.test.vue';
 import { useMenuStore } from '../../../stores/mobile-menu/mobile-menu';
@@ -47,7 +46,7 @@ describe('Menu', () => {
     };
   });
 
-  it('Renders correctly (user store\'s id is 0)', () => {
+  it("Renders correctly (user store's id is 0)", () => {
     const pinia = createTestingPinia({
       stubActions: false,
     });
@@ -68,7 +67,7 @@ describe('Menu', () => {
     screen.getByText('The search is case insensitive');
   });
 
-  it('Renders correctly (user store\'s id is different from 0)', () => {
+  it("Renders correctly (user store's id is different from 0)", () => {
     const pinia = createTestingPinia({
       stubActions: false,
     });

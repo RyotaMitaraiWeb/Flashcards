@@ -37,7 +37,7 @@ describe('BookmarkButton component', () => {
 
     render(BookmarkButtonVue, {
       global: {
-        plugins: [vuetify, pinia]
+        plugins: [vuetify, pinia],
       },
       props: {
         id: 1,

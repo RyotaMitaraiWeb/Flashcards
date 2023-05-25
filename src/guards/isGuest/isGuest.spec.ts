@@ -9,7 +9,7 @@ describe('IsGuestGuard', () => {
     setActivePinia(createPinia());
   });
 
-  it('Returns true if the the user\'s id is 0', () => {
+  it("Returns true if the the user's id is 0", () => {
     const store = useUserStore();
     store.restartUser();
 
@@ -17,7 +17,7 @@ describe('IsGuestGuard', () => {
     expect(result).toBe(true);
   });
 
-  it('Returns an object to redirect to home if the user\'s id is different from 0', () => {
+  it("Returns an object to redirect to home if the user's id is different from 0", () => {
     const store = useUserStore();
     store.setUser({ id: 1, username: 'a' });
 

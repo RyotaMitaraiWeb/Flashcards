@@ -15,14 +15,14 @@ const route = {
   name: undefined,
   path: '',
   params: {},
-}
+};
 
 describe('getDeck resolver', () => {
   beforeEach(() => {
     setActivePinia(createPinia());
 
     const snackbar = useSnackbarStore();
-    vi.spyOn(snackbar, 'open').mockImplementation(() => { });
+    vi.spyOn(snackbar, 'open').mockImplementation(() => {});
   });
 
   it('Returns true and attaches result to route.meta.decks if successful', async () => {

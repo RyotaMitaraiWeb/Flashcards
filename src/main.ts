@@ -11,9 +11,12 @@ import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 
 import { colors } from './constants/colors';
-import { getLocalStoragePalette, getLocalStorageTheme } from './util/localStorageTheme/localStoragePreferences';
+import {
+  getLocalStoragePalette,
+  getLocalStorageTheme,
+} from './util/localStorageTheme/localStoragePreferences';
 import { aliases, mdi } from 'vuetify/iconsets/mdi';
-import "@mdi/font/css/materialdesignicons.css";
+import '@mdi/font/css/materialdesignicons.css';
 import type { ICreatedSession } from './types/components/auth';
 import { api } from './constants/api';
 import { HttpStatus } from './constants/httpstatus';
@@ -55,24 +58,23 @@ const vuetify = createVuetify({
         dark: false,
         colors: {
           primary: colors[palette],
-        }
+        },
       },
       dark: {
         dark: true,
         colors: {
           primary: colors[palette],
-
-        }
-      }
-    }
+        },
+      },
+    },
   },
   icons: {
     defaultSet: 'mdi',
     aliases,
     sets: {
       mdi,
-    }
-  }
+    },
+  },
 });
 
 vuetify.theme.global.name.value = getLocalStorageTheme();

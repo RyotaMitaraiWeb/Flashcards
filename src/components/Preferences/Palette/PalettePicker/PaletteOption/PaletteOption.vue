@@ -14,10 +14,10 @@ const props = defineProps<IPaletteOption>();
 const input = ref<HTMLInputElement>();
 const theme = useTheme();
 
-const matchesTheme = computed(() =>
-  (colors[props.value] === theme.themes.value.light.colors.primary)
-  ||
-  (colors[props.value] === theme.themes.value.dark.colors.primary)
+const matchesTheme = computed(
+  () =>
+    colors[props.value] === theme.themes.value.light.colors.primary ||
+    colors[props.value] === theme.themes.value.dark.colors.primary
 );
 
 const labels = {
@@ -28,7 +28,7 @@ const labels = {
   blueGrey: 'Blue gray',
   red: 'Red',
   pink: 'Pink',
-}
+};
 
 function check() {
   if (input.value && input.value.checked === false) {
@@ -47,13 +47,25 @@ function changePalette() {
 
 <template>
   <div :class="`option ${matchesTheme ? 'checked' : 'nocheck'}`" @click="check">
-    <label class="color" :for="value" :style="{
-      background: `${colors[value]}`
-    }">
+    <label
+      class="color"
+      :for="value"
+      :style="{
+        background: `${colors[value]}`,
+      }"
+    >
       {{ labels[value] }}
     </label>
-    <input :id="value" ref="input" name="palette" type="radio" :class="`radio ${value}`" :value="value" :checked="matchesTheme"
-      @change.prevent="changePalette" />
+    <input
+      :id="value"
+      ref="input"
+      name="palette"
+      type="radio"
+      :class="`radio ${value}`"
+      :value="value"
+      :checked="matchesTheme"
+      @change.prevent="changePalette"
+    />
     <h2 aria-hidden="true">{{ labels[value] }}</h2>
   </div>
 </template>

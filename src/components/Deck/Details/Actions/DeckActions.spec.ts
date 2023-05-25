@@ -25,7 +25,7 @@ const router = createRouter({
       path: '/',
       component: HomeVue,
     },
-  ]
+  ],
 });
 
 const vuetify = createVuetify({
@@ -37,10 +37,12 @@ const pinia = createTestingPinia({
   stubActions: false,
 });
 
-const flashcards: IFlashcard[] = [{
-  front: 'front side',
-  back: 'back side',
-}];
+const flashcards: IFlashcard[] = [
+  {
+    front: 'front side',
+    back: 'back side',
+  },
+];
 
 const deck: IDeck = {
   title: 'Some deck',
@@ -51,7 +53,7 @@ const deck: IDeck = {
   createdAt: '2023-04-22T09:00:13.900Z',
   updatedAt: '2023-04-22T09:00:13.900Z',
   flashcards,
-}
+};
 
 describe('DeckActions component', () => {
   it('Renders correctly for all users (including guests)', async () => {
@@ -63,8 +65,8 @@ describe('DeckActions component', () => {
         deck,
       },
       global: {
-        plugins: [vuetify, pinia, router]
-      }
+        plugins: [vuetify, pinia, router],
+      },
     });
 
     const buttons = document.querySelectorAll('.action-btn');
@@ -79,15 +81,15 @@ describe('DeckActions component', () => {
     await userStore.setUser({
       id: 2,
       username: 'ryota1',
-    })
+    });
 
     render(DeckActionsVue, {
       props: {
         deck,
       },
       global: {
-        plugins: [vuetify, pinia, router]
-      }
+        plugins: [vuetify, pinia, router],
+      },
     });
 
     const buttons = document.querySelectorAll('.action-btn');
@@ -111,8 +113,8 @@ describe('DeckActions component', () => {
         deck: bookmarkedDeck,
       },
       global: {
-        plugins: [vuetify, pinia, router]
-      }
+        plugins: [vuetify, pinia, router],
+      },
     });
 
     const buttons = document.querySelectorAll('.action-btn');
@@ -126,15 +128,15 @@ describe('DeckActions component', () => {
     await userStore.setUser({
       id: 2,
       username: 'ryota1',
-    })
+    });
 
     render(DeckActionsVue, {
       props: {
         deck,
       },
       global: {
-        plugins: [vuetify, pinia, router]
-      }
+        plugins: [vuetify, pinia, router],
+      },
     });
 
     vi.spyOn(requestFunctions, 'post').mockImplementation(async () => {
@@ -174,8 +176,8 @@ describe('DeckActions component', () => {
         deck,
       },
       global: {
-        plugins: [vuetify, pinia, router]
-      }
+        plugins: [vuetify, pinia, router],
+      },
     });
 
     const buttons = document.querySelectorAll('.action-btn');

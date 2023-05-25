@@ -7,7 +7,6 @@ import * as directives from 'vuetify/directives';
 import { allowedPreferences } from '../../../../../constants/allowedPreferences';
 import PaletteOptionVue from './PaletteOption.vue';
 
-
 const vuetify = createVuetify({
   components,
   directives,
@@ -18,10 +17,10 @@ describe('PaletteOption component', () => {
     localStorage.setItem('palette', allowedPreferences.palettes[1]);
     render(PaletteOptionVue, {
       global: {
-        plugins: [vuetify]
+        plugins: [vuetify],
       },
       props: {
-        value: allowedPreferences.palettes[0] // 'deepPurple'
+        value: allowedPreferences.palettes[0], // 'deepPurple'
       },
     });
 
@@ -39,10 +38,10 @@ describe('PaletteOption component', () => {
     localStorage.setItem('palette', allowedPreferences.palettes[0]);
     render(PaletteOptionVue, {
       global: {
-        plugins: [vuetify]
+        plugins: [vuetify],
       },
       props: {
-        value: allowedPreferences.palettes[0] // 'deepPurple'
+        value: allowedPreferences.palettes[0], // 'deepPurple'
       },
     });
 

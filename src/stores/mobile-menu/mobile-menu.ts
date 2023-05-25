@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import type { ILoadingState, IMenuState} from '../../types/store/store';
+import type { ILoadingState, IMenuState } from '../../types/store/store';
 
 export const useMenuStore = defineStore('mobileMenu', () => {
   const menu = ref<IMenuState>({

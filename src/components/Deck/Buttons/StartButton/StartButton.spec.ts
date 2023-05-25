@@ -14,10 +14,10 @@ const vuetify = createVuetify({
 
 describe('StartButton component', () => {
   it('Renders correctly', async () => {
-      render(StartButtonVue, {
+    render(StartButtonVue, {
       global: {
-        plugins: [vuetify]
-      }
+        plugins: [vuetify],
+      },
     });
 
     await screen.findByText('Start studying');

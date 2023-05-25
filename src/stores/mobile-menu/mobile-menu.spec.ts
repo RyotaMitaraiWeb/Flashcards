@@ -1,4 +1,4 @@
-import { setActivePinia, createPinia } from 'pinia'
+import { setActivePinia, createPinia } from 'pinia';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { useMenuStore } from './mobile-menu';
 import type { IMenuState } from '../../types/store/store';
@@ -33,7 +33,7 @@ describe('userStore', () => {
     const store = useMenuStore();
     store.open();
     store.close();
-    
+
     const menu: IMenuState = store.menu;
 
     expect(menu).toEqual<IMenuState>({

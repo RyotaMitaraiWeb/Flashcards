@@ -21,7 +21,7 @@ describe('FlashcardBody component', () => {
       },
       global: {
         plugins: [vuetify],
-      }
+      },
     });
 
     await screen.findByText('flashcard content');
@@ -37,7 +37,7 @@ describe('FlashcardBody component', () => {
       },
       global: {
         plugins: [vuetify],
-      }
+      },
     });
 
     await screen.findByText('flashcard content');

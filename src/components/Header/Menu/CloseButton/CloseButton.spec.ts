@@ -29,7 +29,7 @@ describe('CloseButton', () => {
     render(CloseButton, {
       global: {
         plugins: [vuetify, pinia],
-      }
+      },
     });
 
     const element = screen.getByText('Close');

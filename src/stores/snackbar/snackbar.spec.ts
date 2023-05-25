@@ -1,4 +1,4 @@
-import { setActivePinia, createPinia } from 'pinia'
+import { setActivePinia, createPinia } from 'pinia';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { useSnackbarStore } from './snackbar';
 import type { ISnackbarState } from '../../types/store/store';
@@ -16,7 +16,7 @@ describe('snackbarStore', () => {
     expect(snackbar).toEqual<ISnackbarState>({
       open: false,
       status: 'info',
-      text: ''
+      text: '',
     });
   });
 
@@ -34,7 +34,7 @@ describe('snackbarStore', () => {
 
     store.open(['a'], 'error');
     const snackbar2: ISnackbarState = store.snackbar;
-    
+
     expect(snackbar2).toEqual<ISnackbarState>({
       open: true,
       status: 'error',
@@ -46,7 +46,7 @@ describe('snackbarStore', () => {
     const store = useSnackbarStore();
     store.open('a', 'error');
     store.close();
-    
+
     const snackbar: ISnackbarState = store.snackbar;
 
     expect(snackbar).toEqual<ISnackbarState>({

@@ -7,5 +7,11 @@ const { close } = menuStore;
 </script>
 
 <template>
-  <v-list-item id="close-btn" @click="close" title="Close" prepend-icon="mdi-close" value="close"></v-list-item>
+  <v-list-item
+    id="close-btn"
+    @click="close"
+    title="Close"
+    prepend-icon="mdi-close"
+    value="close"
+  ></v-list-item>
 </template>

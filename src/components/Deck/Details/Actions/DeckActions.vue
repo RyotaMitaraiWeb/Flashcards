@@ -29,7 +29,6 @@ function bookmark() {
 function unbookmark() {
   hasBeenBookmarked.value = false;
 }
-
 </script>
 
 <template>
@@ -76,8 +75,8 @@ function unbookmark() {
       gap: 10px;
 
       @media screen and (max-width: 420px) {
-          gap: 40px;
-        }
+        gap: 40px;
+      }
 
       .action-btn {
         width: 350px;
@@ -86,7 +85,6 @@ function unbookmark() {
 
         @media screen and (max-width: 420px) {
           width: 200px;
-          
         }
       }
     }

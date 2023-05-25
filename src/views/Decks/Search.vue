@@ -12,7 +12,7 @@ document.title = `Search results for "${title}"`;
 
 watch(route, () => {
   document.title = `Search results for "${route.query.title || ''}"`;
-})
+});
 </script>
 
 <template>

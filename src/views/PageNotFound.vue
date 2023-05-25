@@ -16,7 +16,8 @@ document.title = 'Page not found';
   text-align: center;
   font-size: 20pt;
 
-  h1, p {
+  h1,
+  p {
     margin-bottom: 20px;
   }
 }

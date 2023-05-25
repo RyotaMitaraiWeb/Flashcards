@@ -10,5 +10,5 @@ export const flashcardValidator = {
   },
   maxSideLength(value: string): string | boolean {
     return value.length <= flashcardRules.sideMaxLength || flashcardMessages.sideIsTooLong;
-  }
-}
+  },
+};

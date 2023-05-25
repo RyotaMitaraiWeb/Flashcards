@@ -26,8 +26,8 @@ const router = createRouter({
     {
       path: '/',
       component: HomeVue,
-    }
-  ]
+    },
+  ],
 });
 
 describe('CataloguePaginator component', () => {
@@ -50,10 +50,10 @@ describe('CataloguePaginator component', () => {
     const pinia = createTestingPinia({
       stubActions: false,
     });
-    
+
     render(CataloguePaginatorVue, {
       global: {
-        plugins: [vuetify, router, pinia]
+        plugins: [vuetify, router, pinia],
       },
       props: {
         total: 31,

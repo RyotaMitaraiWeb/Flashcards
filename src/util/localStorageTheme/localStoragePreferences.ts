@@ -2,13 +2,13 @@ import { allowedPreferences } from '../../constants/allowedPreferences';
 import type { palette, theme } from '../../types/store/store';
 
 /**
- * Retrieves the current theme on application load. If the theme is invalid, returns the first valid 
+ * Retrieves the current theme on application load. If the theme is invalid, returns the first valid
  * one.
  * @returns value of ``theme`` in ``localStorage`` or the first valid theme if ``theme`` is invalid.
  */
 export function getLocalStorageTheme() {
-  const theme = localStorage.getItem('theme') || '';  
-  if (!allowedPreferences.themes.includes(theme as theme)) {    
+  const theme = localStorage.getItem('theme') || '';
+  if (!allowedPreferences.themes.includes(theme as theme)) {
     return allowedPreferences.themes[0];
   }
 

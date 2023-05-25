@@ -1,4 +1,4 @@
-import { setActivePinia, createPinia } from 'pinia'
+import { setActivePinia, createPinia } from 'pinia';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { useUserStore } from './user';
 import type { IUserState } from '../../types/store/store';

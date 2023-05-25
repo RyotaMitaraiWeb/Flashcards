@@ -14,20 +14,20 @@ const vuetify = createVuetify({
 describe('Field component', () => {
   beforeEach(() => {
     // prevent ResizeObserver not defined error, this isn't testing any resizing
-  
-      global.ResizeObserver = class ResizeObserver {
-        observe() {
-          // do nothing
-        }
-        unobserve() {
-          // do nothing
-        }
-        disconnect() {
-          // do nothing
-        }
-      };
+
+    global.ResizeObserver = class ResizeObserver {
+      observe() {
+        // do nothing
+      }
+      unobserve() {
+        // do nothing
+      }
+      disconnect() {
+        // do nothing
+      }
+    };
   });
-  
+
   it('Renders correctly (no max value counter displayed)', async () => {
     const { container, emitted } = render(Field, {
       global: {
@@ -38,7 +38,7 @@ describe('Field component', () => {
         name: 'username',
         hint: 'some hint',
         type: 'text',
-      }
+      },
     });
 
     screen.findAllByText('Some label');
@@ -65,7 +65,7 @@ describe('Field component', () => {
         type: 'text',
         counter: 15,
         displayMaxCounter: true,
-      }
+      },
     });
 
     screen.findByText('0 / 15');
@@ -83,7 +83,7 @@ describe('Field component', () => {
         type: 'text',
         counter: 15,
         displayMaxCounter: true,
-      }
+      },
     });
 
     const field = document.querySelector('input');
@@ -103,7 +103,7 @@ describe('Field component', () => {
         counter: 15,
         displayMaxCounter: true,
         textarea: true,
-      }
+      },
     });
 
     const textarea = document.querySelector('textarea');
@@ -132,7 +132,7 @@ describe('Field component', () => {
         displayMaxCounter: true,
         rules: [invalid, invalidAsync],
         modelValue: '',
-      }
+      },
     });
 
     const input = container.querySelector('input') as HTMLInputElement;

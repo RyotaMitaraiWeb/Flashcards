@@ -24,9 +24,9 @@ const router = createRouter({
     {
       path: '/',
       component: HomeVue,
-    }
-  ]
-})
+    },
+  ],
+});
 
 describe('EditButton', () => {
   it('Renders correctly', async () => {
@@ -35,8 +35,8 @@ describe('EditButton', () => {
         id: 1,
       },
       global: {
-        plugins: [vuetify, router]
-      }
+        plugins: [vuetify, router],
+      },
     });
 
     await screen.findByText('Edit');

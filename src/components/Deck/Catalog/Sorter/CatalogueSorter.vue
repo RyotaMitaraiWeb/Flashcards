@@ -36,14 +36,14 @@ const sortCategories = [
     displayName: 'Last updated (descending)',
     sort: 'updatedAt-desc',
   },
-]
+];
 
 const sortBy = ref(props.sortBy || 'title');
 const order = ref(props.order || 'asc');
 
-const displayName = sortCategories
-  .find(sc => sc.sort === `${sortBy.value}-${order.value}`)?.displayName
-  || sortCategories[0].displayName;
+const displayName =
+  sortCategories.find((sc) => sc.sort === `${sortBy.value}-${order.value}`)?.displayName ||
+  sortCategories[0].displayName;
 
 const currentSortCategory = ref({
   displayName,

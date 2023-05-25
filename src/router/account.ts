@@ -6,5 +6,5 @@ export const accountRoutes: RouteRecordRaw[] = [
     path: '/account/settings',
     component: PreferencesVue,
     name: 'settings',
-  }
+  },
 ];

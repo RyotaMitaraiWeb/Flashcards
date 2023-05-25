@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import PalettePicker from '../../components/Preferences/Palette/PalettePicker/PalettePicker.vue';
-
 </script>
-
 
 <template>
   <section>

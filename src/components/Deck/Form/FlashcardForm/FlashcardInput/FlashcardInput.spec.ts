@@ -14,7 +14,7 @@ describe('FlashcardInput component', () => {
   it('Renders correctly for front side', async () => {
     render(FlashcardInputVue, {
       global: {
-        plugins: [vuetify]
+        plugins: [vuetify],
       },
       props: {
         content: '',
@@ -28,7 +28,7 @@ describe('FlashcardInput component', () => {
   it('Renders correctly for back side', async () => {
     render(FlashcardInputVue, {
       global: {
-        plugins: [vuetify]
+        plugins: [vuetify],
       },
       props: {
         content: '',
@@ -42,7 +42,7 @@ describe('FlashcardInput component', () => {
   it('Works correctly when inputting', async () => {
     render(FlashcardInputVue, {
       global: {
-        plugins: [vuetify]
+        plugins: [vuetify],
       },
       props: {
         content: '',
@@ -65,7 +65,7 @@ describe('FlashcardInput component', () => {
   it('Focuses to textarea when handle and outer area of the "card" are clicked', async () => {
     const { container } = render(FlashcardInputVue, {
       global: {
-        plugins: [vuetify]
+        plugins: [vuetify],
       },
       props: {
         content: '',

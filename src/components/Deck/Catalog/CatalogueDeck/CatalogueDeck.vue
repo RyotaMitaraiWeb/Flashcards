@@ -23,7 +23,7 @@ const subtitle = dateFormatter(props.deck.createdAt, props.deck.updatedAt);
         {{ deck.description }}
       </v-card-text>
       <v-card-actions>
-        <v-btn 
+        <v-btn
           variant="flat"
           color="primary"
           class="catalogue-button"
@@ -36,7 +36,7 @@ const subtitle = dateFormatter(props.deck.createdAt, props.deck.updatedAt);
           To deck
         </v-btn>
       </v-card-actions>
-  </v-card>
+    </v-card>
   </article>
 </template>
 

@@ -28,9 +28,9 @@ const router = createRouter({
     {
       path: '/',
       component: HomeVue,
-    }
-  ]
-})
+    },
+  ],
+});
 
 describe('DeleteButton', () => {
   it('Renders and behaves correctly', async () => {
@@ -43,8 +43,8 @@ describe('DeleteButton', () => {
         id: 1,
       },
       global: {
-        plugins: [vuetify, router, pinia]
-      }
+        plugins: [vuetify, router, pinia],
+      },
     });
 
     await screen.findByText('Delete');
@@ -77,8 +77,8 @@ describe('DeleteButton', () => {
         id: 1,
       },
       global: {
-        plugins: [vuetify, router, pinia]
-      }
+        plugins: [vuetify, router, pinia],
+      },
     });
 
     const btn = await screen.findByText('Delete');

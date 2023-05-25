@@ -7,7 +7,6 @@ import * as directives from 'vuetify/directives';
 import ThemeTogglerVue from './ThemeToggler.vue';
 import { allowedPreferences } from '../../../../constants/allowedPreferences';
 
-
 const vuetify = createVuetify({
   components,
   directives,
@@ -18,7 +17,7 @@ describe('ThemeToggler component', () => {
     render(ThemeTogglerVue, {
       global: {
         plugins: [vuetify],
-      }
+      },
     });
 
     const toggler = await screen.findByLabelText('switch to dark mode');
@@ -37,7 +36,7 @@ describe('ThemeToggler component', () => {
     render(ThemeTogglerVue, {
       global: {
         plugins: [vuetify],
-      }
+      },
     });
 
     const darkToggler = await screen.findByLabelText('switch to light mode');
@@ -48,4 +47,4 @@ describe('ThemeToggler component', () => {
 
     await screen.findByLabelText('switch to light mode');
   });
-})
+});

@@ -1,4 +1,4 @@
-import { validationRules } from "./validationRules";
+import { validationRules } from './validationRules';
 
 const { account, deck } = validationRules;
 
@@ -32,5 +32,5 @@ export const validationErrorMessages = Object.freeze({
   flashcard: {
     sideIsTooShort: `A side must be at least ${validationRules.flashcard.sideMinLength} character(s) long`,
     sideIsTooLong: `A side must be no more than ${validationRules.flashcard.sideMaxLength} character(s) long`,
-  }
+  },
 });

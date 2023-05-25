@@ -15,7 +15,7 @@ const open = ref(false);
 <template>
   <ListToggler v-model="open"></ListToggler>
   <template v-if="open">
-    <template v-for="flashcard, i in flashcards" :key="i">
+    <template v-for="(flashcard, i) in flashcards" :key="i">
       <div class="flashcard-pair">
         <FlashcardBody :content="flashcard.front" bold></FlashcardBody>
         <FlashcardBody :content="flashcard.back"></FlashcardBody>

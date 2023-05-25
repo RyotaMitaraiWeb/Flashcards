@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import type { ILoadingState} from '../../types/store/store';
+import type { ILoadingState } from '../../types/store/store';
 
 export const useLoadingStore = defineStore('loading', () => {
   const loading = ref<ILoadingState>({

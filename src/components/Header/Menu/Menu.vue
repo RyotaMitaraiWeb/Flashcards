@@ -16,14 +16,20 @@ const { user } = storeToRefs(userStore);
 
 <template>
   <v-navigation-drawer v-model="menu.open" temporary location="left" id="menu">
-      <SearchField></SearchField>
-      <v-list>
-        <MenuItem title="Home" value="home" icon="mdi-home" to="/"></MenuItem>
-        <MenuItem v-if="user.id !== 0" title="Create a new deck" value="create" icon="mdi-plus" to="/decks/create"></MenuItem>
-        <MenuItem title="All Decks" value="alldecks" icon="mdi-view-list" to="/decks/all"></MenuItem>
-        <MenuItem title="Settings" value="settings" icon="mdi-cog" to="/account/settings"></MenuItem>
-        <CloseButton></CloseButton>
-      </v-list>
+    <SearchField></SearchField>
+    <v-list>
+      <MenuItem title="Home" value="home" icon="mdi-home" to="/"></MenuItem>
+      <MenuItem
+        v-if="user.id !== 0"
+        title="Create a new deck"
+        value="create"
+        icon="mdi-plus"
+        to="/decks/create"
+      ></MenuItem>
+      <MenuItem title="All Decks" value="alldecks" icon="mdi-view-list" to="/decks/all"></MenuItem>
+      <MenuItem title="Settings" value="settings" icon="mdi-cog" to="/account/settings"></MenuItem>
+      <CloseButton></CloseButton>
+    </v-list>
   </v-navigation-drawer>
 </template>
 

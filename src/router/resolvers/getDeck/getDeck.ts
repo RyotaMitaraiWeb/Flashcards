@@ -16,10 +16,10 @@ export async function getDeck(to: RouteLocation) {
       return true;
     } else {
       snackbar.open(invalidActionsMessages.deckDoesNotExist, 'error');
-      return { name: '404' }
+      return { name: '404' };
     }
   } catch {
     snackbar.open(invalidActionsMessages.requestFailed, 'error');
-    return { name: 'home' }
+    return { name: 'home' };
   }
 }

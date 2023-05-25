@@ -7,7 +7,6 @@ import { computed } from 'vue';
 
 const themeProvider = useTheme();
 const theme = computed(() => themeProvider.name.value);
-
 </script>
 
 <template>

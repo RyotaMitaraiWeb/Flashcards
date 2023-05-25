@@ -8,7 +8,7 @@ import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
 import { useUserStore } from '../../../stores/user/user';
 import HeaderActions from './HeaderActions.vue';
-import { createTestingPinia } from "@pinia/testing";
+import { createTestingPinia } from '@pinia/testing';
 
 const vuetify = createVuetify({
   components,
@@ -27,8 +27,8 @@ const router = createRouter({
   ],
 });
 
-describe('HeaderActions', () => {  
-  it('Displays register and login buttons when the user\'s id is 0', () => {
+describe('HeaderActions', () => {
+  it("Displays register and login buttons when the user's id is 0", () => {
     const pinia = createTestingPinia({
       stubActions: false,
     });
@@ -46,11 +46,11 @@ describe('HeaderActions', () => {
     screen.getByText('Register');
   });
 
-  it('Displays logout and profile buttons when the user\'s id is different from 0', async () => {
+  it("Displays logout and profile buttons when the user's id is different from 0", async () => {
     const pinia = createTestingPinia({
       stubActions: false,
     });
-  
+
     const store = useUserStore();
     store.setUser({
       id: 1,

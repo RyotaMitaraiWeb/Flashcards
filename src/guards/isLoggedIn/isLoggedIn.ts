@@ -4,7 +4,7 @@ import { useUserStore } from '../../stores/user/user';
 
 /**
  * Returns ``true`` if the user is logged in or an object to redirect the user to the login page
- * 
+ *
  * This is done by checking the global state and verifying if the user's ``id`` is different from 0.
  */
 export function IsLoggedInGuard() {
@@ -12,7 +12,7 @@ export function IsLoggedInGuard() {
   const user = store.user;
 
   const snackbar = useSnackbarStore();
-  
+
   if (user.id !== 0) {
     return true;
   }

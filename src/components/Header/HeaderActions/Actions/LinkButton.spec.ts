@@ -22,7 +22,6 @@ describe('LinkButton', () => {
     ],
   });
 
-
   it('Renders correctly', () => {
     const { container } = render(LinkButton, {
       props: {
@@ -35,7 +34,7 @@ describe('LinkButton', () => {
       },
       global: {
         plugins: [vuetify, router],
-      }
+      },
     });
 
     screen.getByText('Login');

@@ -15,18 +15,20 @@ const vuetify = createVuetify({
 
 describe('FlashcardsList component', () => {
   it('Renders correctly with one pair', async () => {
-    const flashcards: IFlashcard[] = [{
-      front: 'front side',
-      back: 'back side',
-    }];
+    const flashcards: IFlashcard[] = [
+      {
+        front: 'front side',
+        back: 'back side',
+      },
+    ];
 
     render(FlashcardsListVue, {
       props: {
-        flashcards
+        flashcards,
       },
       global: {
         plugins: [vuetify],
-      }
+      },
     });
 
     const pairs = document.querySelector('.flashcard-pair');
@@ -54,16 +56,16 @@ describe('FlashcardsList component', () => {
       {
         front: 'some front',
         back: 'some back',
-      }
+      },
     ];
 
     render(FlashcardsListVue, {
       props: {
-        flashcards
+        flashcards,
       },
       global: {
         plugins: [vuetify],
-      }
+      },
     });
     const toggler = await screen.findByText(/Open/i);
     await fireEvent.click(toggler);

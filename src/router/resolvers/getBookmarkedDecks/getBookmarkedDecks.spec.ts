@@ -16,14 +16,14 @@ const route = {
   name: undefined,
   path: '',
   params: {},
-}
+};
 
 describe('getDeck resolver', () => {
   beforeEach(() => {
     setActivePinia(createPinia());
 
     const snackbar = useSnackbarStore();
-    vi.spyOn(snackbar, 'open').mockImplementation(() => { });
+    vi.spyOn(snackbar, 'open').mockImplementation(() => {});
   });
 
   it('Attaches result to route.meta.decks if server responds with 200', async () => {
@@ -48,7 +48,7 @@ describe('getDeck resolver', () => {
     });
   });
 
-  it('Does not attach the result to route.meta if the user\'s id is 0', async () => {
+  it("Does not attach the result to route.meta if the user's id is 0", async () => {
     const user = useUserStore();
     user.restartUser();
 
@@ -65,7 +65,7 @@ describe('getDeck resolver', () => {
     expect(route.meta).toEqual({});
   });
 
-  it('Does not attach the result to route.meta if the user\'s id is different from 0, but does not successfuly retrieve the result', async () => {
+  it("Does not attach the result to route.meta if the user's id is different from 0, but does not successfuly retrieve the result", async () => {
     const user = useUserStore();
     user.setUser({
       id: 1,
@@ -85,7 +85,7 @@ describe('getDeck resolver', () => {
     expect(route.meta).toEqual({});
   });
 
-  it('Does not attach the result to route.meta if the user\'s id is different from 0, but the request throws', async () => {
+  it("Does not attach the result to route.meta if the user's id is different from 0, but the request throws", async () => {
     const user = useUserStore();
     user.setUser({
       id: 1,

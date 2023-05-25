@@ -42,18 +42,40 @@ async function validate() {
 
 <template>
   <template v-if="textarea">
-    <v-textarea class="field" :label="props.label" :name="props.name" persistent-hint :hint="props.hint" clearable
-      v-model="input" :error-messages="errorMessages" :max-errors="5"
-      :counter="props.displayMaxCounter ? props.counter : 'counter'" persistent-counter :type="props.type"
-      @update:model-value="validate" auto-grow>
-
+    <v-textarea
+      class="field"
+      :label="props.label"
+      :name="props.name"
+      persistent-hint
+      :hint="props.hint"
+      clearable
+      v-model="input"
+      :error-messages="errorMessages"
+      :max-errors="5"
+      :counter="props.displayMaxCounter ? props.counter : 'counter'"
+      persistent-counter
+      :type="props.type"
+      @update:model-value="validate"
+      auto-grow
+    >
     </v-textarea>
   </template>
   <template v-else>
-    <v-text-field class="field" :label="props.label" :name="props.name" persistent-hint :hint="props.hint" clearable
-      v-model="input" :error-messages="errorMessages" :max-errors="5"
-      :counter="props.displayMaxCounter ? props.counter : 'counter'" persistent-counter :type="props.type"
-      @update:model-value="validate">
+    <v-text-field
+      class="field"
+      :label="props.label"
+      :name="props.name"
+      persistent-hint
+      :hint="props.hint"
+      clearable
+      v-model="input"
+      :error-messages="errorMessages"
+      :max-errors="5"
+      :counter="props.displayMaxCounter ? props.counter : 'counter'"
+      persistent-counter
+      :type="props.type"
+      @update:model-value="validate"
+    >
     </v-text-field>
   </template>
 </template>

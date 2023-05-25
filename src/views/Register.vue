@@ -43,7 +43,7 @@ async function register() {
   const body = {
     username: username.value,
     password: password.value,
-  }
+  };
 
   try {
     const { res, data } = await post<ICreatedSession>(api.endpoints.accounts.register, body);
@@ -56,7 +56,7 @@ async function register() {
       router.push('/');
       snackbar.open(successActionsMessages.register, 'success');
     } else {
-      const errors = (data as unknown) as IHttpError;
+      const errors = data as unknown as IHttpError;
       if (res.status >= 500) {
         snackbar.open(invalidActionsMessages.requestFailed, 'error');
       } else {
@@ -70,7 +70,7 @@ async function register() {
 }
 
 function validateUsername(value: boolean) {
-  usernameIsValid.value = value;  
+  usernameIsValid.value = value;
 }
 
 function validatePassword(value: boolean) {
@@ -83,21 +83,36 @@ function validatePassword(value: boolean) {
     <h1>Register</h1>
     <v-form @submit.prevent="register" id="register">
       <div class="field-section">
-        <Field label="Username" name="username"
-          hint="Username must be between 5 and 15 characters long, unique, and alphanumeric" type="text"
-          :counter="maxUsernameLengthRule" :rules="[minUsernameLength, maxUsernameLength, alphanumericUsername, uniqueUsername]"
-          display-max-counter v-model="username"
+        <Field
+          label="Username"
+          name="username"
+          hint="Username must be between 5 and 15 characters long, unique, and alphanumeric"
+          type="text"
+          :counter="maxUsernameLengthRule"
+          :rules="[minUsernameLength, maxUsernameLength, alphanumericUsername, uniqueUsername]"
+          display-max-counter
+          v-model="username"
           @validate-field="validateUsername"
         >
         </Field>
       </div>
       <div class="field-section">
-        <Field label="Password" name="password" hint="Password must be at least 6 characters long" type="password"
-          :counter="6" :rules="[minPasswordLength]" v-model="password" @validate-field="validatePassword">
+        <Field
+          label="Password"
+          name="password"
+          hint="Password must be at least 6 characters long"
+          type="password"
+          :counter="6"
+          :rules="[minPasswordLength]"
+          v-model="password"
+          @validate-field="validatePassword"
+        >
         </Field>
       </div>
       <div class="field-section">
-        <Submit icon="mdi-form-select" :disabled="!(usernameIsValid && passwordIsValid)">Register</Submit>
+        <Submit icon="mdi-form-select" :disabled="!(usernameIsValid && passwordIsValid)"
+          >Register</Submit
+        >
       </div>
     </v-form>
   </section>

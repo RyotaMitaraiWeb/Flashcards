@@ -20,7 +20,11 @@ import { storeToRefs } from 'pinia';
  * @param _from 
  * @param next 
  */
-export async function getBookmarkedDecks(route: RouteLocation, _from: RouteLocation, next: NavigationGuardNext): Promise<void> {
+export async function getBookmarkedDecks(
+  route: RouteLocation,
+  _from: RouteLocation,
+  next: NavigationGuardNext
+): Promise<void> {
   const snackbar = useSnackbarStore();
   const userStore = useUserStore();
   const userRef = storeToRefs(userStore);
@@ -29,7 +33,7 @@ export async function getBookmarkedDecks(route: RouteLocation, _from: RouteLocat
   if (user.value.id !== 0) {
     try {
       const { res, data } = await get<ICatalogueDeck[]>(api.endpoints.bookmarks.saved);
-      
+
       if (res.ok) {
         route.meta['decks'] = data;
       } else if (res.status >= 500) {

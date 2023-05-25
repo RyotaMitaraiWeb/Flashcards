@@ -15,13 +15,13 @@ const route = {
   name: undefined,
   path: '',
   params: {},
-}
+};
 
 describe('getDeck resolver', () => {
   beforeEach(() => {
     setActivePinia(createPinia());
   });
-  
+
   it('returns true if a deck is retrieved successfully and attaches the result', async () => {
     vi.spyOn(requestFunctions, 'get').mockImplementation(async () => {
       const res = new Response(undefined, {
@@ -29,7 +29,7 @@ describe('getDeck resolver', () => {
       });
 
       vi.spyOn(res, 'json').mockImplementation(async () => ({ prop: {} }));
-      const data = await res.json();      
+      const data = await res.json();
       return { res, data };
     });
 
@@ -54,7 +54,7 @@ describe('getDeck resolver', () => {
       });
 
       vi.spyOn(res, 'json').mockImplementation(async () => ({ prop: {} }));
-      const data = await res.json();      
+      const data = await res.json();
       return { res, data };
     });
 

@@ -14,8 +14,8 @@ const currentTab = ref<'DeckInfo' | 'StudySession'>('DeckInfo');
 
 const tabs = {
   DeckInfo,
-  StudySession
-}
+  StudySession,
+};
 
 function start() {
   currentTab.value = 'StudySession';

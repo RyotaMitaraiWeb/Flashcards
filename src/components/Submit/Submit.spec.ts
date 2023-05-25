@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/vue';
 import { createVuetify } from 'vuetify';
 import * as components from 'vuetify/components';
 import * as directives from 'vuetify/directives';
-import { createTestingPinia } from "@pinia/testing";
+import { createTestingPinia } from '@pinia/testing';
 import { useLoadingStore } from '../../stores/loading/loading';
 import Submit from './Submit.vue';
 
@@ -26,7 +26,7 @@ describe('Submit component', () => {
       },
       props: {
         icon: 'mdi-login-variant',
-      }
+      },
     });
 
     screen.findByText('Login');
@@ -55,8 +55,8 @@ describe('Submit component', () => {
       },
       props: {
         icon: 'mdi-login-variant',
-        color: 'indigo'
-      }
+        color: 'indigo',
+      },
     });
 
     const button = container.querySelector('.submit-btn') as HTMLButtonElement;
@@ -80,7 +80,7 @@ describe('Submit component', () => {
       props: {
         icon: 'mdi-login-variant',
         disabled: true,
-      }
+      },
     });
 
     const button = container.querySelector('.submit-btn') as HTMLButtonElement;

@@ -9,7 +9,7 @@ describe('IsGuestGuard', () => {
     setActivePinia(createPinia());
   });
 
-  it('Returns true if the the user\'s id is different from 0', () => {
+  it("Returns true if the the user's id is different from 0", () => {
     const store = useUserStore();
     store.setUser({ id: 1, username: 'a' });
 
@@ -17,12 +17,12 @@ describe('IsGuestGuard', () => {
     expect(result).toBe(true);
   });
 
-  it('Returns an object to redirect to login if the user\'s id is 0', () => {
+  it("Returns an object to redirect to login if the user's id is 0", () => {
     const store = useUserStore();
     store.restartUser();
 
     const snackbar = useSnackbarStore();
-    const spy = vi.spyOn(snackbar, 'open').mockImplementation(() => { });
+    const spy = vi.spyOn(snackbar, 'open').mockImplementation(() => {});
 
     const result = IsLoggedInGuard();
     expect(result).toEqual({ name: 'login' });

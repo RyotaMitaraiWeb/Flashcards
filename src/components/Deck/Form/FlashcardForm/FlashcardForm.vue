@@ -13,10 +13,14 @@ export interface IFlashcardForm {
 
 const props = defineProps<IFlashcardForm>();
 const emit = defineEmits(['saveFlashcards']);
-const flashcards = ref(props.flashcards || [{
-  front: '',
-  back: '',
-}]);
+const flashcards = ref(
+  props.flashcards || [
+    {
+      front: '',
+      back: '',
+    },
+  ]
+);
 const index = ref(0);
 
 const frontSide = computed(() => flashcards.value[index.value].front);
@@ -25,7 +29,7 @@ const backSide = computed(() => flashcards.value[index.value].back);
 function add() {
   const flashcard: IFlashcard = {
     front: '',
-    back: ''
+    back: '',
   };
 
   flashcards.value.push(flashcard);
@@ -64,10 +68,21 @@ function updateFlashcards(update: IUpdateContent) {
     <div class="controls">
       <LeftArrow :class="index > 0 ? '' : 'invisible'" @click="moveToPreviousFlashcard"></LeftArrow>
       <div class="cards">
-        <FlashcardInput :content="frontSide" side="front" @update-content="updateFlashcards"></FlashcardInput>
-        <FlashcardInput :content="backSide" side="back" @update-content="updateFlashcards"></FlashcardInput>
+        <FlashcardInput
+          :content="frontSide"
+          side="front"
+          @update-content="updateFlashcards"
+        ></FlashcardInput>
+        <FlashcardInput
+          :content="backSide"
+          side="back"
+          @update-content="updateFlashcards"
+        ></FlashcardInput>
       </div>
-      <RightArrow :class="index < flashcards.length - 1 ? '' : 'invisible'" @click="moveToNextFlashcard"></RightArrow>
+      <RightArrow
+        :class="index < flashcards.length - 1 ? '' : 'invisible'"
+        @click="moveToNextFlashcard"
+      ></RightArrow>
     </div>
     <div class="others">
       <p>{{ index + 1 }} / {{ flashcards.length }}</p>
@@ -77,7 +92,12 @@ function updateFlashcards(update: IUpdateContent) {
         </template>
         Add
       </v-btn>
-      <v-btn @click.prevent="remove" class="delete-btn flashcard-btn" color="red-darken-4" v-show="flashcards.length > validationRules.deck.flashcards.minimumFlashcards">
+      <v-btn
+        @click.prevent="remove"
+        class="delete-btn flashcard-btn"
+        color="red-darken-4"
+        v-show="flashcards.length > validationRules.deck.flashcards.minimumFlashcards"
+      >
         <template v-slot:prepend>
           <v-icon icon="mdi-delete"></v-icon>
         </template>

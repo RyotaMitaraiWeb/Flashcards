@@ -37,7 +37,7 @@ describe('UnbookmarkButton component', () => {
 
     render(UnbookmarkButtonVue, {
       global: {
-        plugins: [vuetify, pinia]
+        plugins: [vuetify, pinia],
       },
       props: {
         id: 1,

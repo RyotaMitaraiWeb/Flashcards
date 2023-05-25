@@ -21,24 +21,26 @@ const deck: IDeck = {
   authorId: 1,
   createdAt: '2023-05-03T08:58:28.830Z',
   updatedAt: '2023-05-03T08:58:28.830Z',
-  flashcards: [{
-    front: 'a',
-    back: 'a',
-  }],
+  flashcards: [
+    {
+      front: 'a',
+      back: 'a',
+    },
+  ],
 };
 
 describe('BasicInfo component', () => {
   it('Renders correctly (has never been updated)', async () => {
     render(BasicInfoVue, {
       props: {
-        deck
+        deck,
       },
       global: {
-        plugins: [vuetify]
-      }
+        plugins: [vuetify],
+      },
     });
 
-    const date = toShortDate(deck.createdAt)
+    const date = toShortDate(deck.createdAt);
 
     await screen.findByText(deck.title);
     await screen.findByText(deck.description);
@@ -47,14 +49,14 @@ describe('BasicInfo component', () => {
 
   it('Renders correctly (has been updated)', async () => {
     const updatedDeck = { ...deck };
-    updatedDeck.updatedAt = '2023-06-03T08:58:28.830Z'
+    updatedDeck.updatedAt = '2023-06-03T08:58:28.830Z';
     render(BasicInfoVue, {
       props: {
         deck: updatedDeck,
       },
       global: {
-        plugins: [vuetify]
-      }
+        plugins: [vuetify],
+      },
     });
 
     const createdAt = toShortDate(updatedDeck.createdAt);
@@ -62,7 +64,6 @@ describe('BasicInfo component', () => {
 
     await screen.findByText(deck.title);
     await screen.findByText(deck.description);
-    await screen
-      .findByText(`Created on: ${createdAt}. Last updated on: ${updatedAt}`);
+    await screen.findByText(`Created on: ${createdAt}. Last updated on: ${updatedAt}`);
   });
 });

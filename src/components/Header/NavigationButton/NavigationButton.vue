@@ -12,5 +12,9 @@ function toggle() {
 </script>
 
 <template>
-  <v-app-bar-nav-icon @click.stop="toggle" id="menu-btn" aria-label="Open menu"></v-app-bar-nav-icon>
+  <v-app-bar-nav-icon
+    @click.stop="toggle"
+    id="menu-btn"
+    aria-label="Open menu"
+  ></v-app-bar-nav-icon>
 </template>

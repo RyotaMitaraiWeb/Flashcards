@@ -18,7 +18,7 @@ import { useRouter } from 'vue-router';
 import { successActionsMessages } from '../../../constants/successActionsMessages';
 
 export interface IDeckForm {
-  deck?: IDeckSubmission
+  deck?: IDeckSubmission;
   context: 'create' | 'edit';
 }
 
@@ -27,10 +27,14 @@ const props = defineProps<IDeckForm>();
 const title = ref(props.deck?.title || '');
 const description = ref(props.deck?.description || '');
 
-const flashcards = ref<IFlashcard[]>(props.deck?.flashcards || [{
-  front: '',
-  back: '',
-}]);
+const flashcards = ref<IFlashcard[]>(
+  props.deck?.flashcards || [
+    {
+      front: '',
+      back: '',
+    },
+  ]
+);
 
 const display = useDisplay();
 const width = display.width;
@@ -63,7 +67,11 @@ function validate(value: string, ...rules: ValidatorFunction[]) {
 }
 
 function validateDeck() {
-  const titleIsValid = validate(title.value, deckValidator.minTitleLength, deckValidator.maxTitleLength);
+  const titleIsValid = validate(
+    title.value,
+    deckValidator.minTitleLength,
+    deckValidator.maxTitleLength
+  );
   const descriptionIsValid = validate(description.value, deckValidator.maxDescriptionLength);
   const hasMinimumFlashcards = deckValidator.minFlashcardsAmount(flashcards.value.length);
 
@@ -74,7 +82,10 @@ function validateDeck() {
   } else {
     if (!hasMinimumFlashcards) {
       tab.value = 'flashcards';
-      snackbar.open(`Please add at least ${validationRules.deck.flashcards.minimumFlashcards} card(s) to your deck!`, 'error');
+      snackbar.open(
+        `Please add at least ${validationRules.deck.flashcards.minimumFlashcards} card(s) to your deck!`,
+        'error'
+      );
       return false;
     } else {
       for (let i = 0; i < flashcards.value.length; i++) {
@@ -82,8 +93,16 @@ function validateDeck() {
         const front = flashcard.front;
         const back = flashcard.back;
 
-        const frontIsValid = validate(front, flashcardValidator.minSideLength, flashcardValidator.maxSideLength);
-        const backIsValid = validate(back, flashcardValidator.minSideLength, flashcardValidator.maxSideLength);
+        const frontIsValid = validate(
+          front,
+          flashcardValidator.minSideLength,
+          flashcardValidator.maxSideLength
+        );
+        const backIsValid = validate(
+          back,
+          flashcardValidator.minSideLength,
+          flashcardValidator.maxSideLength
+        );
 
         if (!(frontIsValid && backIsValid)) {
           snackbar.open(`Flashcard #${i + 1} is invalid!`, 'error');
@@ -98,7 +117,10 @@ function validateDeck() {
 }
 
 async function createDeck() {
-  const endpoint = props.context === 'create' ? api.endpoints.decks.create : api.endpoints.decks.edit(props.deck?.id || 0);
+  const endpoint =
+    props.context === 'create'
+      ? api.endpoints.decks.create
+      : api.endpoints.decks.edit(props.deck?.id || 0);
   const deckIsValid = validateDeck();
   if (deckIsValid) {
     try {
@@ -119,11 +141,14 @@ async function createDeck() {
         const result = await put<undefined>(endpoint, body);
         res = result.res;
       }
-      
+
       if (res.ok) {
         const id = data?.id || props.deck?.id || 0;
         await router.push(`/decks/${id}`);
-        const message = props.context === 'create' ? successActionsMessages.createdDeck : successActionsMessages.editedDeck;
+        const message =
+          props.context === 'create'
+            ? successActionsMessages.createdDeck
+            : successActionsMessages.editedDeck;
         snackbar.open(message, 'success');
       }
     } catch {
@@ -135,18 +160,35 @@ async function createDeck() {
 
 <template>
   <div class="buttons">
-    <v-btn class="tab-btn" @click="tab = 'basic'" aria-label="Manage title and description">Basic Info</v-btn>
-    <v-btn class="tab-btn" @click="tab = 'flashcards'" aria-label="Manage flashcards">Flashcards</v-btn>
+    <v-btn class="tab-btn" @click="tab = 'basic'" aria-label="Manage title and description"
+      >Basic Info</v-btn
+    >
+    <v-btn class="tab-btn" @click="tab = 'flashcards'" aria-label="Manage flashcards"
+      >Flashcards</v-btn
+    >
   </div>
   <template v-if="tab === 'basic'">
     <h1 v-if="context === 'create'">Create a new deck!</h1>
     <h1 v-else>Edit {{ deck?.title || '' }}!</h1>
-    <BasicData :title="title" :description="description" @update-title="setTitle" @update-description="setDescription">
+    <BasicData
+      :title="title"
+      :description="description"
+      @update-title="setTitle"
+      @update-description="setDescription"
+    >
     </BasicData>
   </template>
   <template v-else>
-    <FlashcardForm v-if="width > 768" :flashcards="flashcards" @save-flashcards="saveFlashcards"></FlashcardForm>
-    <MobileFlashcardForm v-else :flashcards="flashcards" @save-flashcards="saveFlashcards"></MobileFlashcardForm>
+    <FlashcardForm
+      v-if="width > 768"
+      :flashcards="flashcards"
+      @save-flashcards="saveFlashcards"
+    ></FlashcardForm>
+    <MobileFlashcardForm
+      v-else
+      :flashcards="flashcards"
+      @save-flashcards="saveFlashcards"
+    ></MobileFlashcardForm>
   </template>
   <v-btn class="submit" color="primary" @click.prevent="createDeck">
     <template v-if="context === 'create'">Create</template>

@@ -27,7 +27,7 @@ export const api = Object.freeze({
       root: `${bookmarks}`,
       add: (id: string | number) => `${bookmarks}/${id}`,
       remove: (id: string | number) => `${bookmarks}/${id}`,
-      saved: `${bookmarks}`
+      saved: `${bookmarks}`,
     },
   },
 });

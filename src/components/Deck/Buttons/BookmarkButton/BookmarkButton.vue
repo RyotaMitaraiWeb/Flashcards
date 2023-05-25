@@ -35,7 +35,13 @@ async function bookmark() {
 </script>
 
 <template>
-  <v-btn :disabled="loadingStore.loading.status" color="blue-darken-4" variant="flat" @click.prevent="bookmark" class="action-btn bookmark-btn">
+  <v-btn
+    :disabled="loadingStore.loading.status"
+    color="blue-darken-4"
+    variant="flat"
+    @click.prevent="bookmark"
+    class="action-btn bookmark-btn"
+  >
     <template v-slot:prepend>
       <v-icon icon="mdi-bookmark"></v-icon>
     </template>

@@ -26,7 +26,7 @@ describe('SettingsButton', () => {
     const { container } = render(SettingsButton, {
       global: {
         plugins: [vuetify, router],
-      }
+      },
     });
 
     const link = container.querySelector('a');
@@ -43,7 +43,7 @@ describe('SettingsButton', () => {
     const element = render(SettingsButton, {
       global: {
         plugins: [vuetify, router],
-      }
+      },
     });
 
     await fireEvent.mouseOver(element.baseElement);
@@ -52,7 +52,7 @@ describe('SettingsButton', () => {
     expect(tooltip).not.toBeNull();
   });
 
-  it('Does not render when the screen is smaller than Vuetify\'s sm breakpoint', () => {
+  it("Does not render when the screen is smaller than Vuetify's sm breakpoint", () => {
     const smallVuetify = createVuetify({
       components,
       directives,
@@ -65,13 +65,13 @@ describe('SettingsButton', () => {
           lg: 1502,
           xl: 1503,
         },
-      }
-    }); 
+      },
+    });
 
     const { container } = render(SettingsButton, {
       global: {
         plugins: [smallVuetify, router],
-      }
+      },
     });
 
     const element = container.querySelector('.gear');

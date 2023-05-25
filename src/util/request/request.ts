@@ -7,14 +7,14 @@ import type { IRequest, IResponse, method } from '../../types/util/request';
  * and conditionally attaching the body to the request. This will also temporarily set the loading
  * store's ``status`` to ``true`` (which reverts back to ``false`` after the response is parsed successfully
  * or returns ``undefined``)
- * @param method 
- * @param url 
- * @param body 
- * @returns 
+ * @param method
+ * @param url
+ * @param body
+ * @returns
  */
 async function request<T>(method: method, url: string, body?: any): Promise<IResponse<T>> {
   const headers: HeadersInit = {
-    'Authorization': `Bearer ${localStorage.getItem('accessToken') || ''}`,
+    Authorization: `Bearer ${localStorage.getItem('accessToken') || ''}`,
     'Access-Control-Allow-Origin': '*',
   };
 
@@ -35,7 +35,7 @@ async function request<T>(method: method, url: string, body?: any): Promise<IRes
   let data: T | undefined = undefined;
 
   if (res.status !== HttpStatus.NO_CONTENT) {
-    data = await res.json() as T;
+    data = (await res.json()) as T;
   }
 
   loading.stopLoading();
@@ -46,10 +46,10 @@ async function request<T>(method: method, url: string, body?: any): Promise<IRes
 /**
  * Makes a ``GET`` request to the specified URL. ``T`` specifies the expected data type of the
  * response body. The JWT
- * 
+ *
  * **Note:** ``data`` is undefined if the status code is 204. This method does not expose a request
  * body, as GET requests cannot have bodies by specification.
- * @param url 
+ * @param url
  * @returns A promise that resolves to an ``IResponse`` object of type ``T``.
  */
 export function get<T>(url: string): Promise<IResponse<T>> {
@@ -57,14 +57,14 @@ export function get<T>(url: string): Promise<IResponse<T>> {
 }
 
 /**
-  * Makes a ``POST`` request to the specified URL. If ``body`` is different from ``undefined``
-  * or ``null``, it will be attached to the request.
-  * ``T`` specifies the expected data type of the
+ * Makes a ``POST`` request to the specified URL. If ``body`` is different from ``undefined``
+ * or ``null``, it will be attached to the request.
+ * ``T`` specifies the expected data type of the
  * response body.
- * 
+ *
  * **Note:** ``data`` is undefined if the status code is 204.
- * @param url 
- * @param body 
+ * @param url
+ * @param body
  * @returns A promise that resolves to an ``IResponse`` object of type ``T``.
  */
 export function post<T>(url: string, body?: any): Promise<IResponse<T>> {
@@ -72,15 +72,15 @@ export function post<T>(url: string, body?: any): Promise<IResponse<T>> {
 }
 
 /**
-  * Makes a ``PUT`` request to the specified URL. If ``body`` is different from ``undefined``
-  * or ``null``, it will be attached to the request.
-  * ``T`` specifies the expected data type of the
+ * Makes a ``PUT`` request to the specified URL. If ``body`` is different from ``undefined``
+ * or ``null``, it will be attached to the request.
+ * ``T`` specifies the expected data type of the
  * response body.
- * 
+ *
  * **Note:** ``data`` is undefined if the status code is 204.
- * @param url 
- * @param body 
- * @returns A promise that resolves to an ``IResponse`` object of type ``T``. 
+ * @param url
+ * @param body
+ * @returns A promise that resolves to an ``IResponse`` object of type ``T``.
  */
 export function put<T>(url: string, body?: any): Promise<IResponse<T>> {
   return request<T>('PUT', url, body);
@@ -89,10 +89,10 @@ export function put<T>(url: string, body?: any): Promise<IResponse<T>> {
 /**
  * Makes a ``DELETE`` request to the specified URL. ``T`` specifies the expected data type of the
  * response body.
- * 
+ *
  * **Note:** ``data`` is undefined if the status code is 204. This method does not expose a request
  * body, as DELETE requests cannot have bodies by specification.
- * @param url 
+ * @param url
  * @returns A promise that resolves to an ``IResponse`` object of type ``T``.
  */
 export function del<T>(url: string): Promise<IResponse<T>> {

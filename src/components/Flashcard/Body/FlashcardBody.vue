@@ -30,12 +30,11 @@ defineProps<IFlashcardBody>();
 </template>
 
 <style lang="scss" scoped>
-
 .flashcard-body {
   text-align: center;
   display: flex;
   align-items: center;
-  
+
   .text {
     display: inline-block;
     text-align: left;
@@ -44,7 +43,7 @@ defineProps<IFlashcardBody>();
   .big-text {
     font-size: 24pt;
     line-height: 1.05;
-    
+
     @media screen and (max-width: 650px) {
       font-size: 12pt;
     }
