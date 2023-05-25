@@ -28,5 +28,6 @@ const { user } = storeToRefs(userStore);
   position: relative !important; // initial fixed position is set via style property
   height: 64px;
   overflow: auto;
+  transition: background-color 0.2s;
 }
 </style>
