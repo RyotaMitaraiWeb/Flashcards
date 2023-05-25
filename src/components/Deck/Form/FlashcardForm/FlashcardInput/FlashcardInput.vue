@@ -5,6 +5,7 @@ import { validationRules } from '../../../../../constants/validationRules';
 import { useTheme } from 'vuetify/lib/framework.mjs';
 import { flashcardValidator } from '../../../../../util/validators/flashcardValidator/flashcardValidator';
 import type { IUpdateContent } from '../../../../../types/components/decks';
+import { getLocalStorageTheme } from '../../../../../util/localStorageTheme/localStoragePreferences';
 
 export interface IFlashcardInput {
   content: string;
@@ -16,7 +17,9 @@ const emit = defineEmits(['updateContent']);
 
 const input = ref<HTMLInputElement | null>(null);
 const theme = useTheme();
-const error = theme.themes.value.light.colors.error;
+const mode = getLocalStorageTheme();
+
+const error = theme.themes.value[mode].colors.error;
 
 const { minSideLength } = flashcardValidator;
 
