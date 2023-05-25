@@ -28,13 +28,13 @@ const userStore = useUserStore();
 const { setUser, restartUser } = userStore;
 
 const { res, data } = await post<ICreatedSession>(api.endpoints.accounts.session);
-  if (res.status === HttpStatus.CREATED) {
-    const { user, token } = data!;
-    setUser(user);
-    localStorage.setItem('accessToken', token);
-  } else {
-    restartUser();
-  }
+if (res.status === HttpStatus.CREATED) {
+  const { user, token } = data!;
+  setUser(user);
+  localStorage.setItem('accessToken', token);
+} else {
+  restartUser();
+}
 
 const palette = getLocalStoragePalette();
 
@@ -44,9 +44,16 @@ const vuetify = createVuetify({
   theme: {
     themes: {
       light: {
-        dark: getLocalStorageTheme() === 'dark',
+        dark: false,
         colors: {
           primary: colors[palette],
+        }
+      },
+      dark: {
+        dark: true,
+        colors: {
+          primary: colors[palette],
+
         }
       }
     }
@@ -59,6 +66,8 @@ const vuetify = createVuetify({
     }
   }
 });
+
+vuetify.theme.global.name.value = getLocalStorageTheme();
 
 app.use(vuetify);
 app.use(router);
